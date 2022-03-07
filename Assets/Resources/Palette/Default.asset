@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae3a8c935693904aae58d541629315f, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  darkPrimaryColor: {r: 0, g: 0.4745098, b: 0.41960785, a: 1}
+  lightPrimaryColor: {r: 0.69803923, g: 0.8745098, b: 0.85882354, a: 1}
+  primaryColor: {r: 0, g: 0.5882353, b: 0.53333336, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  iconColor: {r: 1, g: 1, b: 1, a: 1}
+  accentColor: {r: 1, g: 0.8163534, b: 0, a: 1}
+  primaryTextColor: {r: 0, g: 0, b: 0, a: 1}
+  secondaryTextColor: {r: 0.45882353, g: 0.45882353, b: 0.45882353, a: 1}
+  dividerColor: {r: 0.7411765, g: 0.7411765, b: 0.7411765, a: 1}
+  buttonColor: {r: 0.8117647, g: 0.84705883, b: 0.8627451, a: 1}
+  okButtonColor: {r: 1, g: 0.627451, b: 0, a: 1}
+  quitButtonColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}

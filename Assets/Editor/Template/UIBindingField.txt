@@ -1,0 +1,2 @@
+    [NonSerialized]
+    public %FieldType% %FieldName%;

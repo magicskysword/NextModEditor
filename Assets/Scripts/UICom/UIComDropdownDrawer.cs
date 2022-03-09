@@ -27,6 +27,9 @@ public partial class UIComDropdownDrawer
 
     public void Select(int index)
     {
-        ddlMain.SetValueWithoutNotify(index);
+        if(index >= 0)
+            ddlMain.SetValueWithoutNotify(index);
+        else
+            ddlMain.SetValueWithoutNotify(0);
     }
 }

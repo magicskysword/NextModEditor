@@ -14,17 +14,10 @@ public class ModConfig
     public static ModConfig Load(string dir)
     {
         ModConfig modConfig = null;
-        try
+        string filePath = $"{dir}/modConfig.json";
+        if (File.Exists(filePath))
         {
-            string filePath = $"{dir}/modConfig.json";
-            if (File.Exists(filePath))
-            {
-                modConfig = JObject.Parse(File.ReadAllText(filePath)).ToObject<ModConfig>();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
+            modConfig = JObject.Parse(File.ReadAllText(filePath)).ToObject<ModConfig>();
         }
 
         modConfig = modConfig ?? new ModConfig();
@@ -43,7 +36,7 @@ public class ModConfig
         }
         catch (Exception e)
         {
-            Debug.LogError(e);
+            throw;
         }
     }
 }

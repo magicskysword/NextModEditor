@@ -7,11 +7,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using VirtualList;
+using UnityEngine.UI.Extensions;
 
 public partial class UIComModCommonEditor : UIComBase
 {
     public static string ComName => "ModCommonEditor";
 
+    [NonSerialized]
+    public TMP_InputField inMain;
     [NonSerialized]
     public ScrollRect lstTabs;
     [NonSerialized]
@@ -31,6 +34,7 @@ public partial class UIComModCommonEditor : UIComBase
 
     protected override void OnPreInit()
     {
+        inMain = FindBindComponent<TMP_InputField>("g:inMain");
         lstTabs = FindBindComponent<ScrollRect>("g:lstTabs");
         vlstItems = FindBindComponent<AbstractVirtualList>("g:vlstItems");
         goEditorDrawers = FindBindComponent<RectTransform>("g:goEditorDrawers");

@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System;
+using UniRx;
 using UnityEngine;
 
 public partial class UIMainHeaderPanel
@@ -16,24 +17,56 @@ public partial class UIMainHeaderPanel
         
         btnCmdOpen.OnClickAsObservable().Subscribe(_ =>
         {
-            var project = ModMgr.Instance.OpenProject();
-            if (project != null)
+            try
             {
-                ModMgr.Instance.CurProject = project;
-                EventCenter.Send(new LoadModProjectEventArgs()
+                var project = ModMgr.Instance.OpenProject();
+                if (project != null)
                 {
-                    ModProject = project
-                });
+                    ModMgr.Instance.CurProject = project;
+                    EventCenter.Send(new LoadModProjectEventArgs()
+                    {
+                        ModProject = project
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                UIMessageScrollBoxPanel.ShowMessage($"警告",$"加载Mod发生错误！请检查配置数据或Mod数据。\n{e}"
+                    ,callback: () =>
+                    {
+                        ModMgr.Instance.CurProject = null;
+                        EventCenter.Send(new LoadModProjectEventArgs()
+                        {
+                            ModProject = null
+                        });
+                    });
             }
         });
         
         btnCmdSave.OnClickAsObservable().Subscribe(_ =>
         {
-            var project = ModMgr.Instance.CurProject;
-            if(project != null)
+            try
             {
-                ModMgr.Instance.SaveProject(project);
-                UIMessageBoxPanel.ShowMessage("保存成功", $"项目已保存完毕。");
+                var project = ModMgr.Instance.CurProject;
+                if(project != null)
+                {
+                    ModMgr.Instance.SaveProject(project);
+                    UIMessageBoxPanel.ShowMessage("保存成功", $"项目已保存完毕。");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                UIMessageScrollBoxPanel.ShowMessage($"警告",$"保存Mod发生错误！请检查配置数据并使用安全模式导出。\n{e}"
+                    ,callback: () =>
+                    {
+                        ModMgr.Instance.CurProject = null;
+                        EventCenter.Send(new LoadModProjectEventArgs()
+                        {
+                            ModProject = null
+                        });
+                    });
             }
         });
         

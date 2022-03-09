@@ -12,7 +12,7 @@ public partial class UIComInputNumberDrawer
     public string Content
     {
         get => inMain.text;
-        set => inMain.text = value;
+        set => inMain.SetTextWithoutNotify(value);
     }
 
     public Action<int> EndEdit;

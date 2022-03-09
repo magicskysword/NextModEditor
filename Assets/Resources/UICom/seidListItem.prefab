@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2171507302064420761}
   - component: {fileID: 7059948620047257629}
   m_Layer: 0
-  m_Name: iconDrag
+  m_Name: g:imgDrag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VirtualList;
 
-public class ModSeidListSource : IListSource,IListSourceSelected
+public class ModSeidListSource : IListSource
 {
     public List<ModSeidMeta> SeidList { get; set; }
     public int SelectedIndex { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DG.Tweening;
 using UniRx;
 using UnityEngine;
@@ -10,18 +11,25 @@ public partial class UIComModCommonEditor
     public Action OnClickAddItem;
     public Action OnClickRemoveItem;
     public Action<IModData> OnRefreshItem;
-    public IListSourceSelected ListSourceSelected;
+    public Action OnFilterChange;
+    public ModDataListSource ListSource { get; set; }
+
+    public string Filter => inMain.text;
 
     protected override void OnInit()
     {
         btnItemAdd.OnClickAsObservable().Subscribe(_ => OnClickAddItem?.Invoke());
         btnItemRemove.OnClickAsObservable().Subscribe(_ => OnClickRemoveItem?.Invoke());
+        inMain.OnValueChangedAsObservable().Subscribe(_ =>
+        {
+            OnFilterChange?.Invoke();
+        });
     }
 
-    public void SetItemList<T>(ModDataListSource<T> listSource) where T : IModData
+    public void SetItemList(ModDataListSource listSource)
     {
-        vlstItems.SetSource(listSource);
-        ListSourceSelected = listSource;
+        ListSource = listSource;
+        vlstItems.SetSource(ListSource);
         lstTabs.verticalNormalizedPosition = 1f;
         vlstItems.Invalidate();
     }
@@ -29,7 +37,7 @@ public partial class UIComModCommonEditor
     public void ItemListScrollTo(int index)
     {
         var scrollRect = vlstItems.GetCenteredScrollPosition(index);
-        ListSourceSelected.SelectedIndex = index;
+        ListSource.SelectedIndex = index;
         // lstTabs.content.anchoredPosition = scrollRect;
         lstTabs.content.DOAnchorPos(scrollRect, 0.3f);
         vlstItems.Invalidate();
@@ -68,6 +76,8 @@ public partial class UIComModCommonEditor
         {
             ShowEditor();
             OnRefreshItem?.Invoke(data);
+            var dataIndex = ListSource.DataList.FindIndex(searchData => searchData == data);
+            ItemListScrollTo(dataIndex);
             Observable.EveryUpdate().First().Subscribe(_ =>
             {
                 goDrawerRoot.ForceRebuildLayoutImmediate();

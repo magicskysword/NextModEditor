@@ -15,6 +15,12 @@ public partial class UIComListDrawer
     public ListItemChangeOrder OnListItemChangeOrder;
     public List<IListDrawerItem> Items { get; set; } = new List<IListDrawerItem>();
 
+    public bool CanDrag
+    {
+        get => rolstMain.IsDraggable;
+        set => rolstMain.IsDraggable = value;
+    }
+
     public string Title
     {
         get => txtTitle.text;

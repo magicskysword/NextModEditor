@@ -55,9 +55,17 @@ namespace UnityEngine.UI.Extensions
 
         private bool _isDragging;
         private RectTransform _rect;
-        private ReorderableList _reorderableList;
+
+        private ReorderableList _reorderableList1;
+        private ReorderableList _reorderableList
+        {
+            get => _reorderableList1;
+            set => _reorderableList1 = value;
+        }
+
         private CanvasGroup _canvasGroup;
         internal bool isValid;
+        
 
 
         #region IBeginDragHandler Members
@@ -386,7 +394,7 @@ namespace UnityEngine.UI.Extensions
                     {
                         _reorderableList.OnElementDropped.Invoke(args);
                     }
-                    if (!isValid)
+                    if (!isValid || (!IsTransferable && _currentReorderableListRaycasted != _reorderableList))
                     {
                         CancelDrag();
                         return;
@@ -402,6 +410,10 @@ namespace UnityEngine.UI.Extensions
                         var cg = _draggingObject.GetComponent<CanvasGroup>();
                         cg.blocksRaycasts = true;
                     }
+                    // else
+                    // {
+                    //     CancelDrag();
+                    // }
                     // Force refreshing both lists because otherwise we get inappropriate FromList in ReorderableListEventStruct 
                     _reorderableList.Refresh();
                     _currentReorderableListRaycasted.Refresh();
@@ -472,7 +484,7 @@ namespace UnityEngine.UI.Extensions
         }
 
         #endregion
-
+ 
 
         void CancelDrag()
         {

@@ -1,36 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-public partial class UIModBuffEditorPanel : IModDataEditor
+public partial class UIModBuffEditorPanel : UIModCommonEditorFramePanel
 {
-    private ModProject _bindProject;
-    private ModBuffData _selectedItem;
-
-    public ModProject BindProject
-    {
-        get => _bindProject;
-        set
-        {
-            _bindProject = value;
-            RefreshUI();
-        }
-    }
-
-    public IModData SelectModData => SelectedItem;
-
-    public ModBuffData SelectedItem
-    {
-        get => _selectedItem;
-        set
-        {
-            _selectedItem = value;
-            CommonEditor.RefreshItem(_selectedItem);
-        }
-    }
-    
-    public UIComModCommonEditor CommonEditor { get; set; }
-    public ModDataListSource<ModBuffData> DataListSource { get; set; }
-
     #region Drawer
 
     public UIComInputIdDrawer IdDrawer { get; set; }
@@ -46,14 +20,15 @@ public partial class UIModBuffEditorPanel : IModDataEditor
     public UIComToggleDrawer BuffHideDrawer { get; set; }
     public UIComToggleDrawer BuffShowOnlyOneDrawer { get; set; }
     public UIComSeidListDrawer SeidListDrawer { get; set; }
+    public UIComSeidListDrawer OuterSeidListDrawer { get; set; }
     public UIComInputTextAreaDrawer BuffDescDrawer { get; set; }
     
     #endregion
+    public ModBuffData SelectedItem => (ModBuffData)SelectModData;
+    public override IList DataList => BindProject.BuffData;
 
-    protected override void OnInit()
+    protected override void OnInitEditor()
     {
-        CommonEditor = UIMgr.Instance.CreateCom<UIComModCommonEditor>(transform);
-
         IdDrawer = CommonEditor.AddEditorDrawer<UIComInputIdDrawer>();
         NameDrawer = CommonEditor.AddEditorDrawer<UIComInputTextDrawer>();
         SkillIconDrawer = CommonEditor.AddEditorDrawer<UIComInputNumberDrawer>();
@@ -67,6 +42,7 @@ public partial class UIModBuffEditorPanel : IModDataEditor
         BuffHideDrawer = CommonEditor.AddEditorDrawer<UIComToggleDrawer>();
         BuffShowOnlyOneDrawer = CommonEditor.AddEditorDrawer<UIComToggleDrawer>();
         SeidListDrawer = CommonEditor.AddEditorDrawer<UIComSeidListDrawer>();
+        OuterSeidListDrawer = CommonEditor.AddEditorDrawer<UIComSeidListDrawer>();
         BuffDescDrawer = CommonEditor.AddEditorDrawer<UIComInputTextAreaDrawer>();
         
         
@@ -172,97 +148,82 @@ public partial class UIModBuffEditorPanel : IModDataEditor
             () => BindProject.BuffSeidDataGroup,
             () => SelectedItem.SeidList);
         
+        OuterSeidListDrawer.Title = "未加入功能";
+        OuterSeidListDrawer.BindSeid(this,
+            () => ModMgr.Instance.BuffSeidMetas,
+            () => BindProject.BuffSeidDataGroup,
+            () =>
+            {
+                var list = new List<int>();
+                foreach (var pair in BindProject.BuffSeidDataGroup.DataGroups)
+                {
+                    var seid = BindProject.BuffSeidDataGroup.GetSeid(SelectedItem.ID, pair.Key);
+                    if (seid != null && !SelectedItem.SeidList.Contains(pair.Key))
+                    {
+                        list.Add(pair.Key);
+                    }
+                }
+                return list;
+            });
+        OuterSeidListDrawer.CanDrag = false;
+        OuterSeidListDrawer.ChangeApplyToSeidList = false;
+        
         BuffDescDrawer.Title = "描述";
         BuffDescDrawer.EndEdit = str => SelectedItem.Desc = str;
-
-        // 刷新所有Drawer
-        CommonEditor.OnRefreshItem = data =>
-        {
-            var curData = (ModBuffData)data;
-            IdDrawer.Content = curData.ID.ToString();
-            NameDrawer.Content = curData.Name;
-            SkillIconDrawer.Content = curData.Icon.ToString();
-            SkillEffectDrawer.Content = curData.SkillEffect;
-            AffixDrawer.Content = curData.AffixList.ToFormatString();
-            if (curData.AffixList.Count == 0)
-            {
-                AffixPreviewDrawer.gameObject.SetActive(false);
-            }
-            else
-            {
-                AffixPreviewDrawer.gameObject.SetActive(true);
-                var sb = new StringBuilder();
-                foreach (var id in curData.AffixList)
-                {
-                    var affixData = BindProject.FindAffix(id);
-                    sb.Append(ModUtils.GetAffixDesc(affixData));
-                    sb.Append("\n");
-                }
-
-                AffixPreviewDrawer.Content = sb.ToString();
-            }
-            BuffTypeDrawer.Select(ModMgr.Instance.BuffDataBuffTypes
-                .TryFind(item => item.TypeID == curData.BuffType));
-            BuffTriggerTypeDrawer.Select(ModMgr.Instance.BuffDataTriggerTypes
-                .TryFind(item => item.ID == curData.Trigger));
-            BuffRemoveTriggerTypeDrawer.Select(ModMgr.Instance.BuffDataRemoveTriggerTypes
-                .TryFind(item => item.ID == curData.RemoverTrigger));
-            BuffOverlayTypeDrawer.Select(ModMgr.Instance.BuffDataOverlayTypes
-                .TryFind(item => item.ID == curData.BuffOverlayType));
-            BuffHideDrawer.IsOn = SelectedItem.IsHide == 1;
-            BuffShowOnlyOneDrawer.IsOn = SelectedItem.ShowOnlyOne == 1;
-            SeidListDrawer.Refresh(meta=>$"{meta.ID} {meta.Name}");
-            BuffDescDrawer.Content = curData.Desc;
-
-            var dataIndex = BindProject.BuffData.FindIndex(searchData => searchData == data);
-            CommonEditor.ItemListScrollTo(dataIndex);
-        };
-        
-        CommonEditor.OnClickRemoveItem = () =>
-        {
-            if (SelectedItem != null)
-            {
-                UIConfirmBoxPanel.ShowMessage(
-                    "警告",
-                    $"即将删除 {SelectedItem.ID} {SelectedItem.Name} ，该操作不可恢复，是否继续？",
-                    onOk: () =>
-                    {
-                        BindProject.BuffData.Remove(SelectedItem);
-                        RefreshUI();
-                    });
-            }
-        };
-        
-        CommonEditor.OnClickAddItem = () =>
-        {
-            var maxIndex = BindProject.BuffData.Count > 0 
-                ? BindProject.BuffData.Max(item => item.ID)
-                : 0;
-            var newData = new ModBuffData()
-            {
-                ID = maxIndex + 1
-            };
-            BindProject.BuffData.Add(newData);
-            SelectedItem = newData;
-        };
-        
-        DataListSource = new ModDataListSource<ModBuffData>();
-        DataListSource.RendererItem += (item,data) => item.txtTab.text = $"{data.ID} {data.Name}";;
-        DataListSource.SelectData += item => SelectedItem = item;
     }
 
-    private void RefreshUI()
+    protected override void OnEditorRefresh(IModData data)
     {
-        DataListSource.DataList = BindProject.BuffData;
-        DataListSource.SelectedIndex = 0;
-        CommonEditor.SetItemList(DataListSource);
-        if (BindProject.BuffData.Count > 0)
+        var curData = (ModBuffData)data;
+        IdDrawer.Content = curData.ID.ToString();
+        NameDrawer.Content = curData.Name;
+        SkillIconDrawer.Content = curData.Icon.ToString();
+        SkillEffectDrawer.Content = curData.SkillEffect;
+        AffixDrawer.Content = curData.AffixList.ToFormatString();
+        if (curData.AffixList.Count == 0)
         {
-            SelectedItem = BindProject.BuffData[0];
+            AffixPreviewDrawer.gameObject.SetActive(false);
         }
         else
         {
-            SelectedItem = null;
+            AffixPreviewDrawer.gameObject.SetActive(true);
+            var sb = new StringBuilder();
+            foreach (var id in curData.AffixList)
+            {
+                var affixData = BindProject.FindAffix(id);
+                sb.Append(ModUtils.GetAffixDesc(affixData));
+                sb.Append("\n");
+            }
+
+            AffixPreviewDrawer.Content = sb.ToString();
         }
+        BuffTypeDrawer.Select(ModMgr.Instance.BuffDataBuffTypes
+            .TryFind(item => item.TypeID == curData.BuffType));
+        BuffTriggerTypeDrawer.Select(ModMgr.Instance.BuffDataTriggerTypes
+            .TryFind(item => item.ID == curData.Trigger));
+        BuffRemoveTriggerTypeDrawer.Select(ModMgr.Instance.BuffDataRemoveTriggerTypes
+            .TryFind(item => item.ID == curData.RemoverTrigger));
+        BuffOverlayTypeDrawer.Select(ModMgr.Instance.BuffDataOverlayTypes
+            .TryFind(item => item.ID == curData.BuffOverlayType));
+        BuffHideDrawer.IsOn = SelectedItem.IsHide == 1;
+        BuffShowOnlyOneDrawer.IsOn = SelectedItem.ShowOnlyOne == 1;
+        SeidListDrawer.Refresh(meta=>$"{meta.ID} {meta.Name}");
+        OuterSeidListDrawer.Refresh(meta=>$"{meta.ID} {meta.Name}");
+        BuffDescDrawer.Content = curData.Desc;
+    }
+
+    protected override bool OnFilterData(IModData data, string filter)
+    {
+        var buffData = (ModBuffData)data;
+        var flag = buffData.ID.ToString().Contains(filter) ||
+            buffData.Name.Contains(filter) ||
+            buffData.Desc.Contains(filter);
+        return flag;
+    }
+
+    protected override string GetItemName(IModData data)
+    {
+        var buffData = (ModBuffData)data;
+        return $"{buffData.ID} {buffData.Name}";
     }
 }

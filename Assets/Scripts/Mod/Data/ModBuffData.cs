@@ -57,21 +57,14 @@ public class ModBuffData: IModData
     public static List<ModBuffData> Load(string dir)
     {
         List<ModBuffData> dataDic = new List<ModBuffData>();
-        try
+        var buffDir = $"{dir}/BuffJsonData";
+        if (!Directory.Exists(buffDir))
+            return dataDic;
+        foreach (var filePath in Directory.GetFiles(buffDir))
         {
-            var buffDir = $"{dir}/BuffJsonData";
-            if (!Directory.Exists(buffDir))
-                return dataDic;
-            foreach (var filePath in Directory.GetFiles(buffDir))
-            {
-                var data = JObject.Parse(File.ReadAllText(filePath)).ToObject<ModBuffData>();
-                if (data != null) 
-                    dataDic.Add(data);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
+            var data = JObject.Parse(File.ReadAllText(filePath)).ToObject<ModBuffData>();
+            if (data != null) 
+                dataDic.Add(data);
         }
 
         return dataDic;
@@ -79,22 +72,15 @@ public class ModBuffData: IModData
     
     public static void Save(string dir, List<ModBuffData> dataDic)
     {
-        try
+        var buffDir = $"{dir}/BuffJsonData";
+        if(Directory.Exists(buffDir))
+            Directory.Delete(buffDir,true);
+        Directory.CreateDirectory(buffDir);
+        foreach (var data in dataDic)
         {
-            var buffDir = $"{dir}/BuffJsonData";
-            if(Directory.Exists(buffDir))
-                Directory.Delete(buffDir,true);
-            Directory.CreateDirectory(buffDir);
-            foreach (var data in dataDic)
-            {
-                var filePath = $"{buffDir}/{data.ID}.json";
-                var json = JObject.FromObject(data).ToString(Formatting.Indented);
-                File.WriteAllText(filePath, json);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
+            var filePath = $"{buffDir}/{data.ID}.json";
+            var json = JObject.FromObject(data).ToString(Formatting.Indented);
+            File.WriteAllText(filePath, json);
         }
     }
 }

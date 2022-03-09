@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using UniRx;
 
@@ -29,7 +30,11 @@ public partial class UISeidEditorBoxPanel : IUIClose
                 inputNumberDrawer.Title = seidProperty.Desc;
                 var sInt = seidData.GetToken<ModSInt>(seidProperty.ID);
                 inputNumberDrawer.Content = sInt.Value.ToString();
-                inputNumberDrawer.EndEdit = i => { sInt.Value = i; };
+                inputNumberDrawer.EndEdit = i =>
+                {
+                    sInt.Value = i; 
+                    RefreshUI();
+                };
 
                 CreateIntSpecialDrawer(inputNumberDrawer, seidProperty, sInt);
             }
@@ -51,6 +56,7 @@ public partial class UISeidEditorBoxPanel : IUIClose
                     {
                         inputTextDrawer.ShowWarning("");
                     }
+                    RefreshUI();
                 };
 
                 CreateIntArraySpecialDrawer(inputTextDrawer, seidProperty, sIntArray);
@@ -64,30 +70,84 @@ public partial class UISeidEditorBoxPanel : IUIClose
     {
         foreach (var drawerId in seidProperty.SpecialDrawer)
         {
-            if (drawerId == "BuffDrawer")
+            switch (drawerId)
             {
-                var buffDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
-                buffDrawer.Title = "Buff描述";
-
-                void OnBuffDrawerRefresh()
+                case "BuffDrawer":
                 {
-                    var buffData = ModMgr.Instance.CurProject.FindBuff(sInt.Value);
-                    if (buffData != null)
-                    {
-                        buffDrawer.Content = $"【{sInt.Value} {buffData.Name}】{buffData.Desc}";
-                    }
-                    else
-                    {
-                        buffDrawer.Content = $"【{sInt.Value}  ？】";
-                    }
-                }
+                    var buffDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
+                    buffDrawer.Title = "Buff描述";
 
-                inputNumberDrawer.EndEdit += i =>
-                {
+                    void OnBuffDrawerRefresh()
+                    {
+                        var buffData = ModMgr.Instance.CurProject.FindBuff(sInt.Value);
+                        if (buffData != null)
+                        {
+                            buffDrawer.Content = $"【{sInt.Value} {buffData.Name}】{buffData.Desc}";
+                        }
+                        else
+                        {
+                            buffDrawer.Content = $"【{sInt.Value}  ？】";
+                        }
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnBuffDrawerRefresh();
+                    };
                     OnBuffDrawerRefresh();
-                    RefreshUI();
-                };
-                OnBuffDrawerRefresh();
+                    break;
+                }
+                case "SeidDrawer":
+                {
+                    var seidDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
+                    seidDrawer.Title = "功能描述";
+                    
+                    void OnSeidDrawerRefresh()
+                    {
+                        if (ModMgr.Instance.BuffSeidMetas.TryGetValue(sInt.Value,out var seidMeta))
+                        {
+                            seidDrawer.Content = $"{sInt.Value} 【{seidMeta.Name}】";
+                        }
+                        else
+                        {
+                            seidDrawer.Content = $"{sInt.Value} 【？】";
+                        }
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnSeidDrawerRefresh();
+                    };
+                    OnSeidDrawerRefresh();
+                    break;
+                }
+                case "BuffTypeDrawer":
+                {
+                    var seidDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    seidDrawer.Title = "Buff类型选择器";
+                    
+                    void OnSeidDrawerRefresh()
+                    {
+                        var typeValue = sInt.Value;
+                        var typeList = ModMgr.Instance.BuffDataBuffTypes
+                            .Select(type => $"{type.TypeID} {type.TypeName}").ToList();
+                        seidDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.BuffDataBuffTypes.FindIndex(type => type.TypeID == typeValue);
+                        seidDrawer.Select(typeIndex);
+                        seidDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.BuffDataBuffTypes[index].TypeID;
+                            inputNumberDrawer.Content = typeId.ToString();
+                        };
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnSeidDrawerRefresh();
+                    };
+                    OnSeidDrawerRefresh();
+                    break;
+                }
             }
         }
         
@@ -99,44 +159,83 @@ public partial class UISeidEditorBoxPanel : IUIClose
     {
         foreach (var drawerId in seidProperty.SpecialDrawer)
         {
-            if (drawerId == "BuffArrayDrawer")
+            switch (drawerId)
             {
-                var buffDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
-                buffDrawer.Title = "Buff描述";
-
-                void OnBuffDrawerRefresh()
+                case "BuffArrayDrawer":
                 {
-                    if (sIntArray.Value.Count > 0)
-                    {
-                        buffDrawer.gameObject.SetActive(true);
-                        var sb = new StringBuilder();
-                        foreach (var buffId in sIntArray.Value)
-                        {
-                            var buffData = ModMgr.Instance.CurProject.FindBuff(buffId);
-                            if (buffData != null)
-                            {
-                                sb.Append($"【{buffId} {buffData.Name}】{buffData.Desc}\n");
-                            }
-                            else
-                            {
-                                sb.Append($"【{buffId} ？】\n");
-                            }
+                    var buffDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
+                    buffDrawer.Title = "Buff描述";
 
+                    void OnBuffDrawerRefresh()
+                    {
+                        if (sIntArray.Value.Count > 0)
+                        {
+                            buffDrawer.gameObject.SetActive(true);
+                            var sb = new StringBuilder();
+                            foreach (var buffId in sIntArray.Value)
+                            {
+                                var buffData = ModMgr.Instance.CurProject.FindBuff(buffId);
+                                if (buffData != null)
+                                {
+                                    sb.Append($"【{buffId} {buffData.Name}】{buffData.Desc}\n");
+                                }
+                                else
+                                {
+                                    sb.Append($"【{buffId} ？】\n");
+                                }
+                            }
                             buffDrawer.Content = sb.ToString();
                         }
+                        else
+                        {
+                            buffDrawer.gameObject.SetActive(false);
+                        }
                     }
-                    else
-                    {
-                        buffDrawer.gameObject.SetActive(false);
-                    }
-                }
 
-                inputTextDrawer.EndEdit += i =>
-                {
+                    inputTextDrawer.EndEdit += i =>
+                    {
+                        OnBuffDrawerRefresh();
+                    };
                     OnBuffDrawerRefresh();
-                    RefreshUI();
-                };
-                OnBuffDrawerRefresh();
+                    break;
+                }
+                case "SeidArrayDrawer":
+                {
+                    var seidDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
+                    seidDrawer.Title = "功能描述";
+
+                    void OnSeidDrawerRefresh()
+                    {
+                        if (sIntArray.Value.Count > 0)
+                        {
+                            seidDrawer.gameObject.SetActive(true);
+                            var sb = new StringBuilder();
+                            foreach (var seidId in sIntArray.Value)
+                            {
+                                if (ModMgr.Instance.BuffSeidMetas.TryGetValue(seidId,out var seidMeta))
+                                {
+                                    sb.Append($"{seidId} 【{seidMeta.Name}】");
+                                }
+                                else
+                                {
+                                    sb.Append($"{seidId} 【？】");
+                                }
+                            }
+                            seidDrawer.Content = sb.ToString();
+                        }
+                        else
+                        {
+                            seidDrawer.gameObject.SetActive(false);
+                        }
+                    }
+
+                    inputTextDrawer.EndEdit += i =>
+                    {
+                        OnSeidDrawerRefresh();
+                    };
+                    OnSeidDrawerRefresh();
+                    break;
+                }
             }
         }
     }

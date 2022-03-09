@@ -67,8 +67,8 @@ public class UIMgr : MonoBehaviour
         if(string.IsNullOrEmpty(panelName))
             return null;
 
-        if (_panels.ContainsKey(panelName))
-            return _panels[panelName] as T;
+        if (_panels.ContainsKey(typeof(T).ToString()))
+            return _panels[typeof(T).ToString()] as T;
 
         var go = Instantiate(Resources.Load<GameObject>($"UI/{panelName}"), 
             GetLayerRoot(layer), 
@@ -76,7 +76,7 @@ public class UIMgr : MonoBehaviour
         
         var panel = go.AddComponent<T>();
 
-        _panels.Add(panelName,panel);
+        _panels.Add(typeof(T).ToString(),panel);
         panel.Layer = layer;
         panel.Init();
         
@@ -85,17 +85,12 @@ public class UIMgr : MonoBehaviour
 
     public void DestroyPanel<T>() where T : UIPanelBase
     {
-        var panelName = GetStaticValue<T>("PanelName");
-        
-        if(string.IsNullOrEmpty(panelName))
-            return;
-
-        if (!_panels.ContainsKey(panelName))
+        if (!_panels.ContainsKey(typeof(T).ToString()))
             return;
         
-        var panel = _panels[panelName];
+        var panel = _panels[typeof(T).ToString()];
         
-        _panels.Remove(panelName);
+        _panels.Remove(typeof(T).ToString());
         panel.Hide();
         panel.DestroySelf();
     }

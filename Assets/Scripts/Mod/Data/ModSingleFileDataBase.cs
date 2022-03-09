@@ -13,17 +13,10 @@ public abstract class ModSingleFileDataBase<T> : IModData where T : ModSingleFil
     public static Dictionary<string, T> Load(string dir)
     {
         Dictionary<string, T> dataDic = null;
-        try
+        string filePath = $"{dir}/{FileName}";
+        if (File.Exists(filePath))
         {
-            string filePath = $"{dir}/{FileName}";
-            if (File.Exists(filePath))
-            {
-                dataDic = JObject.Parse(File.ReadAllText(filePath)).ToObject<Dictionary<string, T>>();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
+            dataDic = JObject.Parse(File.ReadAllText(filePath)).ToObject<Dictionary<string, T>>();
         }
 
         dataDic ??= new Dictionary<string, T>();
@@ -33,22 +26,15 @@ public abstract class ModSingleFileDataBase<T> : IModData where T : ModSingleFil
 
     public static void Save(string dir, Dictionary<string,T> dataDic)
     {
-        try
+        string filePath = $"{dir}/{FileName}";
+        if(dataDic != null)
         {
-            string filePath = $"{dir}/{FileName}";
-            if(dataDic != null)
-            {
-                var json = JObject.FromObject(dataDic).ToString(Formatting.Indented);
-                File.WriteAllText(filePath, json);
-            }
-            else
-            {
-                File.Delete(filePath);
-            }
+            var json = JObject.FromObject(dataDic).ToString(Formatting.Indented);
+            File.WriteAllText(filePath, json);
         }
-        catch (Exception e)
+        else
         {
-            Debug.LogError(e);
+            File.Delete(filePath);
         }
     }
 }

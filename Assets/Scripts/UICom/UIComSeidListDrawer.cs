@@ -13,6 +13,11 @@ public class UIComSeidListDrawer : UIComListDrawer
     public IModSeidDataGroup SeidDataGroup => seidGroupGetter.Invoke();
     public List<int> SeidList => seidListGetter.Invoke();
 
+    /// <summary>
+    /// 添加、移除Seid是否影响SeidList
+    /// </summary>
+    public bool ChangeApplyToSeidList { get; set; } = true;
+
     public void BindSeid(IModDataEditor modDataEditor,
         Func<Dictionary<int, ModSeidMeta>> seidMetaGetter,
         Func<IModSeidDataGroup> seidGroupGetter,
@@ -72,9 +77,10 @@ public class UIComSeidListDrawer : UIComListDrawer
                     {
                         SeidDataGroup.GetOrCreateSeid(selectedItem.ID, seidMeta.ID);
                     }
+                    
+                    if(ChangeApplyToSeidList)
+                        SeidList.Add(seidId);
 
-                    SeidList.Add(seidId);
-                    SeidList.Sort();
                     commonEditor.RefreshItem(selectedItem);
                 });
         };
@@ -91,22 +97,35 @@ public class UIComSeidListDrawer : UIComListDrawer
         OnBtnRemoveClick = item =>
         {
             var seidItem = (UIComSeidListItem)item;
-            UIConfirmBoxPanel.ShowMessage(
+            UISelectBoxPanel.ShowMessage(
                 "警告",
-                $"即将删除 Seid {seidItem.SeidTitle} ，该操作不可恢复，是否继续？",
-                onOk: () =>
+                $"即将删除 Seid 【{seidItem.SeidTitle}】 ，该操作不可恢复，是否继续？",
+                func1Text:"完全删除",
+                onFunc1: () =>
                 {
                     var selectedItem = modDataEditor.SelectModData;
                     SeidDataGroup.RemoveSeid(selectedItem.ID, seidItem.SeidID);
-                    SeidList.Remove(seidItem.SeidID);
+                    if(ChangeApplyToSeidList)
+                        SeidList.Remove(seidItem.SeidID);
+                    commonEditor.RefreshItem(selectedItem);
+                },
+                func2Text:"删除引用",
+                onFunc2: () =>
+                {
+                    var selectedItem = modDataEditor.SelectModData;
+                    if(ChangeApplyToSeidList)
+                        SeidList.Remove(seidItem.SeidID);
                     commonEditor.RefreshItem(selectedItem);
                 });
         };
         OnListItemChangeOrder = (from, to) =>
         {
-            var seid = SeidList[from];
-            SeidList.RemoveAt(from);
-            SeidList.Insert(to,seid);
+            if(ChangeApplyToSeidList)
+            {
+                var seid = SeidList[from];
+                SeidList.RemoveAt(from);
+                SeidList.Insert(to, seid);
+            }
         };
     }
 
@@ -117,6 +136,7 @@ public class UIComSeidListDrawer : UIComListDrawer
         {
             var item = AddItem<UIComSeidListItem>();
             item.SeidID = seidId;
+            item.imgDrag.gameObject.SetActive(CanDrag);
             if(SeidMetas.TryGetValue(seidId,out var seidMeta))
             {
                 item.SeidTitle = titleGetter.Invoke(seidMeta);

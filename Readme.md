@@ -7,7 +7,7 @@ NextModEditor 是基于Unity开发，为觅长生的Next Mod框架提供可视�
 ## Unity版本
 2020.3.9f LTS
 
-## 使用开源库
+## 使用库
 [GlitchEnzo/NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) Nuget管理<br/>
 [Newtonsoft.json](https://www.newtonsoft.com/json) Json转换<br/>
 [disruptorbeaminc/VirtualList](https://github.com/disruptorbeaminc/VirtualList) UGUI虚拟列表<br/>

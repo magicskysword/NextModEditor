@@ -7,15 +7,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using VirtualList;
+using UnityEngine.UI.Extensions;
 
 public partial class UIComSeidListItem : UIComBase
 {
     public static string ComName => "seidListItem";
 
     [NonSerialized]
-    public Button btnEdit;
+    public RectTransform imgDrag;
     [NonSerialized]
     public TextMeshProUGUI txtTitle;
+    [NonSerialized]
+    public Button btnEdit;
     [NonSerialized]
     public Button btnWarning;
     [NonSerialized]
@@ -23,8 +26,9 @@ public partial class UIComSeidListItem : UIComBase
 
     protected override void OnPreInit()
     {
-        btnEdit = FindBindComponent<Button>("g:btnEdit");
+        imgDrag = FindBindComponent<RectTransform>("g:imgDrag");
         txtTitle = FindBindComponent<TextMeshProUGUI>("g:txtTitle");
+        btnEdit = FindBindComponent<Button>("g:btnEdit");
         btnWarning = FindBindComponent<Button>("g:btnWarning");
         btnRemove = FindBindComponent<Button>("g:btnRemove");
 

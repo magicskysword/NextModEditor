@@ -1,36 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-public partial class UIModAffixEditorPanel : IModDataEditor
+public partial class UIModAffixEditorPanel : UIModCommonEditorFramePanel
 {
-    private ModProject _bindProject;
-    private ModAffixData _selectedItem;
-
-    public ModProject BindProject
-    {
-        get => _bindProject;
-        set
-        {
-            _bindProject = value;
-            RefreshUI();
-        }
-    }
-
-    public IModData SelectModData => SelectedItem;
-
-    public ModAffixData SelectedItem
-    {
-        get => _selectedItem;
-        set
-        {
-            _selectedItem = value;
-            CommonEditor.RefreshItem(_selectedItem);
-        }
-    }
-    
-    public UIComModCommonEditor CommonEditor { get; set; }
-    public ModDataListSource<ModAffixData> DataListSource { get; set; }
-
     #region Drawer
 
     public UIComInputIdDrawer IdDrawer { get; set; }
@@ -39,11 +13,11 @@ public partial class UIModAffixEditorPanel : IModDataEditor
     public UIComInputTextAreaDrawer DescDrawer { get; set; }
 
     #endregion
-        
-    protected override void OnInit()
+    public ModAffixData SelectedItem => (ModAffixData)SelectModData;
+    public override IList DataList => BindProject.AffixData;
+
+    protected override void OnInitEditor()
     {
-        CommonEditor = UIMgr.Instance.CreateCom<UIComModCommonEditor>(transform);
-        
         IdDrawer = CommonEditor.AddEditorDrawer<UIComInputIdDrawer>();
         ProjectTypeDrawer = CommonEditor.AddEditorDrawer<UIComDropdownDrawer>();
         TypeDrawer = CommonEditor.AddEditorDrawer<UIComDropdownDrawer>();
@@ -92,67 +66,31 @@ public partial class UIModAffixEditorPanel : IModDataEditor
         
         DescDrawer.Title = "描述";
         DescDrawer.EndEdit = str => SelectedItem.Desc = str;
-        
-        // 刷新所有Drawer
-        CommonEditor.OnRefreshItem = data =>
-        {
-            var curData = (ModAffixData)data;
-            IdDrawer.Content = curData.ID.ToString();
-            ProjectTypeDrawer.Select(ModMgr.Instance.AffixDataProjectTypes
-                .TryFind(item => item.TypeNum == curData.ProjectTypeNum));
-            TypeDrawer.Select(ModMgr.Instance.AffixDataAffixTypes
-                .TryFind(item => item.ID == curData.AffixType));
-            DescDrawer.Content = curData.Desc;
-            
-            var dataIndex = BindProject.AffixData.FindIndex(searchData => searchData == data);
-            CommonEditor.ItemListScrollTo(dataIndex);
-        };
-        
-        CommonEditor.OnClickRemoveItem = () =>
-        {
-            if (SelectedItem != null)
-            {
-                UIConfirmBoxPanel.ShowMessage(
-                    "警告",
-                    $"即将删除 {SelectedItem.ID} {SelectedItem.Name} ，该操作不可恢复，是否继续？",
-                    onOk: () =>
-                    {
-                        BindProject.AffixData.Remove(SelectedItem);
-                        RefreshUI();
-                    });
-            }
-        };
-        
-        CommonEditor.OnClickAddItem = () =>
-        {
-            var maxIndex = BindProject.AffixData.Count > 0 
-                ? BindProject.AffixData.Max(item => item.ID)
-                : 0;
-            var newData = new ModAffixData()
-            {
-                ID = maxIndex + 1
-            };
-            BindProject.AffixData.Add(newData);
-            SelectedItem = newData;
-        };
-        
-        DataListSource = new ModDataListSource<ModAffixData>();
-        DataListSource.RendererItem += (item,data) => item.txtTab.text = $"{data.ID} {data.Name}";;
-        DataListSource.SelectData += item => SelectedItem = item;
     }
-    
-    private void RefreshUI()
+
+    protected override void OnEditorRefresh(IModData data)
     {
-        DataListSource.DataList = BindProject.AffixData;
-        DataListSource.SelectedIndex = 0;
-        CommonEditor.SetItemList(DataListSource);
-        if (BindProject.AffixData.Count > 0)
-        {
-            SelectedItem = BindProject.AffixData[0];
-        }
-        else
-        {
-            SelectedItem = null;
-        }
+        var curData = (ModAffixData)data;
+        IdDrawer.Content = curData.ID.ToString();
+        ProjectTypeDrawer.Select(ModMgr.Instance.AffixDataProjectTypes
+            .TryFind(item => item.TypeNum == curData.ProjectTypeNum));
+        TypeDrawer.Select(ModMgr.Instance.AffixDataAffixTypes
+            .TryFind(item => item.ID == curData.AffixType));
+        DescDrawer.Content = curData.Desc;
+    }
+
+    protected override bool OnFilterData(IModData data, string filter)
+    {
+        var affixData = (ModAffixData)data;
+        var flag = affixData.ID.ToString().Contains(filter) ||
+                   affixData.Name.Contains(filter) ||
+                   affixData.Desc.Contains(filter);
+        return flag;
+    }
+
+    protected override string GetItemName(IModData data)
+    {
+        var affixData = (ModAffixData)data;
+        return $"{affixData.ID} {affixData.Name}";
     }
 }

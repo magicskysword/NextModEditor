@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using VirtualList;
 
-public class ModDataListSource<TData> : IListSource,IListSourceSelected where  TData : IModData
+public class ModDataListSource : IListSource
 {
-    public List<TData> DataList { get; set; }
+    public List<IModData> DataList { get; set; }
     public int SelectedIndex { get; set; }
     
-    public event Action<TData> SelectData;
-    public event Action<UIComTglListItem, TData> RendererItem;
+    public event Action<IModData> SelectData;
+    public event Action<UIComTglListItem, IModData> RendererItem;
 
     private List<UIComTglListItem> Items { get; set; } = new List<UIComTglListItem>();
 
@@ -68,7 +69,7 @@ public class ModDataListSource<TData> : IListSource,IListSourceSelected where  T
         }
     }
 
-    private void OnRendererItem(UIComTglListItem item, TData data)
+    private void OnRendererItem(UIComTglListItem item, IModData data)
     {
         RendererItem?.Invoke(item, data);
     }

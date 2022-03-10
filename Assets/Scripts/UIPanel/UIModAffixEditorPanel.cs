@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ public partial class UIModAffixEditorPanel : UIModCommonEditorFramePanel
     #endregion
     public ModAffixData SelectedItem => (ModAffixData)SelectModData;
     public override IList DataList => BindProject.AffixData;
+    public override Type ItemType => typeof(ModAffixData);
 
     protected override void OnInitEditor()
     {

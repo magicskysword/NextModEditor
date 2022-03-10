@@ -30,13 +30,13 @@ public partial class UIComModCommonEditor
     {
         ListSource = listSource;
         vlstItems.SetSource(ListSource);
-        lstTabs.verticalNormalizedPosition = 1f;
         vlstItems.Invalidate();
     }
 
     public void ItemListScrollTo(int index)
     {
         var scrollRect = vlstItems.GetCenteredScrollPosition(index);
+        scrollRect.y = Mathf.Max(0, scrollRect.y);
         ListSource.SelectedIndex = index;
         // lstTabs.content.anchoredPosition = scrollRect;
         lstTabs.content.DOAnchorPos(scrollRect, 0.3f);
@@ -71,12 +71,15 @@ public partial class UIComModCommonEditor
         if (data == null)
         {
             HideEditor();
+            ListSource.SelectedIndex = -1;
+            RefreshItemList();
         }
         else
         {
             ShowEditor();
             OnRefreshItem?.Invoke(data);
             var dataIndex = ListSource.DataList.FindIndex(searchData => searchData == data);
+            ListSource.SelectedIndex = dataIndex;
             ItemListScrollTo(dataIndex);
             Observable.EveryUpdate().First().Subscribe(_ =>
             {

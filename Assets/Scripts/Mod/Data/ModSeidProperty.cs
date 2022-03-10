@@ -7,6 +7,8 @@ public enum ModSeidPropertyType
 {
     Int,
     IntArray,
+    Float,
+    String
 }
 
 public class ModSeidProperty

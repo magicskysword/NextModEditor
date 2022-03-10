@@ -32,6 +32,18 @@ public class ModSeidData : IModData
                     }
                     data.DataList.Add(seidProperty.ID,sIntArray);
                     break;
+                case ModSeidPropertyType.Float:
+                    var sFloat = new ModSFloat();
+                    if (jObject.TryGetValue(seidProperty.ID, out token))
+                        sFloat.Value = token.ToObject<float>();
+                    data.DataList.Add(seidProperty.ID,sFloat);
+                    break;
+                case ModSeidPropertyType.String:
+                    var sString = new ModSString();
+                    if (jObject.TryGetValue(seidProperty.ID, out token))
+                        sString.Value = token.ToObject<string>();
+                    data.DataList.Add(seidProperty.ID,sString);
+                    break;
             }
         }
 

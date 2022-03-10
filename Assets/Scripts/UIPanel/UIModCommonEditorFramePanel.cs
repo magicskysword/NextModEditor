@@ -33,6 +33,7 @@ public abstract partial class UIModCommonEditorFramePanel : IModDataEditor
     public ModDataListSource VirtualDataListSource { get; set; }
     
     public abstract IList DataList { get; }
+    public abstract Type ItemType { get; }
 
     #region Drawer
 
@@ -60,14 +61,13 @@ public abstract partial class UIModCommonEditorFramePanel : IModDataEditor
 
     protected virtual void OnAddItem()
     {
-        var maxIndex = BindProject.CreateAvatarData.Count > 0
-            ? BindProject.CreateAvatarData.Max(item => item.ID)
+        var maxIndex = DataList.Count > 0
+            ? DataList.Cast<IModData>().Max(item => item.ID)
             : 0;
-        var newData = new ModCreateAvatarData()
-        {
-            ID = maxIndex + 1
-        };
+        var newData = (IModData)Activator.CreateInstance(ItemType);
+        newData.ID = maxIndex + 1;
         DataList.Add(newData);
+        RefreshItemList();
         SelectModData = newData;
     }
 
@@ -81,7 +81,8 @@ public abstract partial class UIModCommonEditorFramePanel : IModDataEditor
                 onOk: () =>
                 {
                     DataList.Remove(SelectModData);
-                    RefreshUI();
+                    RefreshItemList();
+                    SelectModData = null;
                 });
         }
     }
@@ -96,18 +97,17 @@ public abstract partial class UIModCommonEditorFramePanel : IModDataEditor
 
     private void RefreshUI()
     {
+        RefreshItemList();
+        VirtualDataListSource.SelectedIndex = 0;
+        SelectModData = VirtualDataListSource.DataList.FirstOrDefault();
+        CommonEditor.lstTabs.verticalNormalizedPosition = 1f;
+    }
+
+    private void RefreshItemList()
+    {
         var filter = CommonEditor.Filter;
         var filterList = DataList.Cast<IModData>().Where(data=>OnFilterData(data,filter)).ToList();
         VirtualDataListSource.DataList = filterList;
-        VirtualDataListSource.SelectedIndex = 0;
         CommonEditor.SetItemList(VirtualDataListSource);
-        if (filterList.Count > 0)
-        {
-            SelectModData = filterList[0];
-        }
-        else
-        {
-            SelectModData = null;
-        }
     }
 }

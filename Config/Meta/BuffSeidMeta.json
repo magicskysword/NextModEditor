@@ -182,7 +182,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -315,7 +318,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             }
         ]
     },
@@ -333,7 +339,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
@@ -346,7 +355,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -397,7 +409,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             }
         ]
     },
@@ -488,7 +503,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -519,7 +537,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -576,7 +597,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -633,7 +657,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -721,7 +748,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -778,7 +808,10 @@
             {
                 "ID": "value4",
                 "Type": "Int",
-                "Desc": "A 属性"
+                "Desc": "A 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -864,7 +897,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -1020,7 +1056,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -1072,8 +1111,8 @@
     "62": {
         "ID": 62,
         "IDName": "id",
-        "Name": "当血量低时触发后续特效",
-        "Desc": "当血量低于X%时触发后续特效",
+        "Name": "当血量低时触发后续特性",
+        "Desc": "当血量低于X%时触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1104,7 +1143,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -1116,8 +1158,8 @@
     "65": {
         "ID": 65,
         "IDName": "id",
-        "Name": "有概率触发后续特效",
-        "Desc": "有X%的概率 触发后续特效",
+        "Name": "有概率触发后续特性",
+        "Desc": "有X%的概率 触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1255,7 +1297,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -1267,15 +1312,15 @@
     "73": {
         "ID": 73,
         "IDName": "id",
-        "Name": "如果敌方有灵气，则触发后续特效",
-        "Desc": "如果敌方有灵气，则触发后续特效",
+        "Name": "如果敌方有灵气，则触发后续特性",
+        "Desc": "如果敌方有灵气，则触发后续特性",
         "Properties": []
     },
     "74": {
         "ID": 74,
         "IDName": "id",
-        "Name": "如果敌方存在Buff，则触发后续特效",
-        "Desc": "如果敌方存在X【Buff】，则触发后续特效",
+        "Name": "如果敌方存在Buff，则触发后续特性",
+        "Desc": "如果敌方存在X【Buff】，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1290,8 +1335,8 @@
     "75": {
         "ID": 75,
         "IDName": "id",
-        "Name": "如果自身存在所有指定Buff，则触发后续特效",
-        "Desc": "如果自身存在所有指定Buff，则触发后续特效",
+        "Name": "如果自身存在所有指定Buff，则触发后续特性",
+        "Desc": "如果自身存在所有指定Buff，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1306,8 +1351,8 @@
     "76": {
         "ID": 76,
         "IDName": "id",
-        "Name": "使用对应技能时，触发后续特效",
-        "Desc": "每次使用X技能时，触发后续特效",
+        "Name": "使用对应技能时，触发后续特性",
+        "Desc": "每次使用X技能时，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1319,8 +1364,8 @@
     "77": {
         "ID": 77,
         "IDName": "id",
-        "Name": "如果是满血状态，则触发后续特效",
-        "Desc": "如果是满血状态，则触发后续特效",
+        "Name": "如果是满血状态，则触发后续特性",
+        "Desc": "如果是满血状态，则触发后续特性",
         "Properties": []
     },
     "78": {
@@ -1352,7 +1397,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
@@ -1372,8 +1420,8 @@
     "81": {
         "ID": 81,
         "IDName": "id",
-        "Name": "当你使用灵气消耗大于等于指定值的技能时，触发后续特效",
-        "Desc": "当你使用灵气消耗大于等于X点的技能时，触发后续特效",
+        "Name": "当你使用灵气消耗大于等于指定值的技能时，触发后续特性",
+        "Desc": "当你使用灵气消耗大于等于X点的技能时，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1432,21 +1480,24 @@
     "85": {
         "ID": 85,
         "IDName": "id",
-        "Name": "每次使用指定属性之一的技能时，触发后续特效",
-        "Desc": "每次使用X属性之一的技能时，触发后续特效",
+        "Name": "每次使用指定属性之一的技能时，触发后续特性",
+        "Desc": "每次使用X属性之一的技能时，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "IntArray",
-                "Desc": "X 属性 数组"
+                "Desc": "X 属性灵气 数组",
+                "SpecialDrawer":[
+                    "ElementTypeArrayDrawer"
+                ]
             }
         ]
     },
     "86": {
         "ID": 86,
         "IDName": "id",
-        "Name": "如果对手是指定角色，则触发后续特效",
-        "Desc": "如果对手是X，则触发后续特效",
+        "Name": "如果对手是指定角色，则触发后续特性",
+        "Desc": "如果对手是X，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1528,8 +1579,8 @@
     "91": {
         "ID": 91,
         "IDName": "id",
-        "Name": "如果敌方不存在指定Buff，则触发后续特效",
-        "Desc": "如果敌方不存在X【Buff】，则触发后续特效",
+        "Name": "如果敌方不存在指定Buff，则触发后续特性",
+        "Desc": "如果敌方不存在X【Buff】，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1591,22 +1642,22 @@
     "95": {
         "ID": 95,
         "IDName": "id",
-        "Name": "如果你本回合没有使用过任何技能，则触发后续特效",
-        "Desc": "如果你本回合没有使用过任何技能，则触发后续特效",
+        "Name": "如果你本回合没有使用过任何技能，则触发后续特性",
+        "Desc": "如果你本回合没有使用过任何技能，则触发后续特性",
         "Properties": []
     },
     "96": {
         "ID": 96,
         "IDName": "id",
-        "Name": "如果你本回合没有造成过任何伤害，则触发后续特效",
-        "Desc": "如果你本回合没有造成过任何伤害，则触发后续特效",
+        "Name": "如果你本回合没有造成过任何伤害，则触发后续特性",
+        "Desc": "如果你本回合没有造成过任何伤害，则触发后续特性",
         "Properties": []
     },
     "97": {
         "ID": 97,
         "IDName": "id",
-        "Name": "如果血量低于一定百分比，则触发后续特效",
-        "Desc": "如果生命值在X%以下，则触发后续特效（血量低于）",
+        "Name": "如果血量低于一定百分比，则触发后续特性",
+        "Desc": "如果生命值在X%以下，则触发后续特性（血量低于）",
         "Properties": [
             {
                 "ID": "value1",
@@ -1629,7 +1680,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             }
         ]
     },
@@ -1650,21 +1704,24 @@
     "101": {
         "ID": 101,
         "IDName": "id",
-        "Name": "当灵气中存在X属性灵气时触发后续特效",
-        "Desc": "当灵气中存在X属性灵气时触发后续特效",
+        "Name": "当灵气中存在X属性灵气时触发后续特性",
+        "Desc": "当灵气中存在X属性灵气时触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
     "102": {
         "ID": 102,
         "IDName": "id",
-        "Name": "当自身不是对应种族时触发后续特效",
-        "Desc": "当自身不是X种族时触发后续特效",
+        "Name": "当自身不是对应种族时触发后续特性",
+        "Desc": "当自身不是X种族时触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1682,7 +1739,10 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
@@ -1700,7 +1760,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
@@ -1718,7 +1781,10 @@
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
@@ -1759,8 +1825,8 @@
     "110": {
         "ID": 110,
         "IDName": "id",
-        "Name": "自身有指定多个Buff则触发后续特效",
-        "Desc": "如果自身同时存在(多个Buff)则触发后续特效",
+        "Name": "自身有指定多个Buff则触发后续特性",
+        "Desc": "如果自身同时存在(多个Buff)则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1804,13 +1870,16 @@
     "113": {
         "ID": 113,
         "IDName": "id",
-        "Name": "每次使用非指定属性技能时，触发后续特效",
-        "Desc": "每次使用非X属性技能时，触发后续特效",
+        "Name": "每次使用非指定属性技能时，触发后续特性",
+        "Desc": "每次使用非X属性技能时，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "IntArray",
-                "Desc": "X 属性 数组"
+                "Desc": "X 属性伤害 数组",
+                "SpecialDrawer":[
+                    "AttackTypeArrayDrawer"
+                ]
             }
         ]
     },
@@ -1825,7 +1894,7 @@
         "ID": 115,
         "IDName": "id",
         "Name": "造成与受到的伤害提高/降低百分比值",
-        "Desc": "（造成/受到）的伤害提高（降低）X*层数%",
+        "Desc": "（造成与受到）的伤害提高（降低）X*层数%",
         "Properties": [
             {
                 "ID": "value1",
@@ -1837,8 +1906,8 @@
     "116": {
         "ID": 116,
         "IDName": "id",
-        "Name": "丹毒高于特定值时触发后续特效",
-        "Desc": "丹毒高于X时触发后续特效",
+        "Name": "丹毒高于特定值时触发后续特性",
+        "Desc": "丹毒高于X时触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1871,8 +1940,8 @@
     "118": {
         "ID": 118,
         "IDName": "id",
-        "Name": "对敌方造成伤害超过指定值，则触发后续特效",
-        "Desc": "若对敌方造成的伤害超过X，则触发后续特效",
+        "Name": "对敌方造成伤害超过指定值，则触发后续特性",
+        "Desc": "若对敌方造成的伤害超过X，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -1884,13 +1953,16 @@
     "119": {
         "ID": 119,
         "IDName": "id",
-        "Name": "若(对手/自己)的对应Buff层数大于值，则触发后续特效",
-        "Desc": "若（对手/自己）的XBuff层数大于Y，则触发后续特效",
+        "Name": "若(对手/自己)的对应Buff层数大于值，则触发后续特性",
+        "Desc": "若（对手/自己）的XBuff层数大于Y，则触发后续特性",
         "Properties": [
             {
                 "ID": "target",
                 "Type": "Int",
-                "Desc": "目标(1自身，2敌方)"
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
             },
             {
                 "ID": "value1",
@@ -1910,39 +1982,48 @@
     "120": {
         "ID": 120,
         "IDName": "id",
-        "Name": "若灵气中有指定属性灵气，则触发后续特效",
-        "Desc": "若灵气中有X属性灵气，则触发后续特效",
+        "Name": "若灵气中有指定属性灵气，则触发后续特性",
+        "Desc": "若灵气中有X属性灵气，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
     "121": {
         "ID": 121,
         "IDName": "id",
-        "Name": "若灵气中没有指定属性灵气，则触发后续特效",
-        "Desc": "若灵气中没有X属性灵气，则触发后续特效",
+        "Name": "若灵气中没有指定属性灵气，则触发后续特性",
+        "Desc": "若灵气中没有X属性灵气，则触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
     "122": {
         "ID": 122,
         "IDName": "id",
-        "Name": "造成指定属性伤害后，触发后续特效",
-        "Desc": "造成X属性伤害后，触发后续特效",
+        "Name": "造成指定属性伤害后，触发后续特性",
+        "Desc": "造成X属性伤害后，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             }
         ]
     },
@@ -1987,8 +2068,8 @@
     "126": {
         "ID": 126,
         "IDName": "id",
-        "Name": "若一种Buff数量大于另一种Buff，则触发后续特效",
-        "Desc": "若xBuff数量大于YBuff数量，则触发后续特效，（自身，没有这个Buff则是数量为零）",
+        "Name": "若一种Buff数量大于另一种Buff，则触发后续特性",
+        "Desc": "若xBuff数量大于YBuff数量，则触发后续特性，（自身，没有这个Buff则是数量为零）",
         "Properties": [
             {
                 "ID": "value1",
@@ -2011,8 +2092,8 @@
     "127": {
         "ID": 127,
         "IDName": "id",
-        "Name": "自己获得多个Buff（X）*Y",
-        "Desc": "自己获得多个Buff（X）*Y",
+        "Name": "自身获得多个Buff",
+        "Desc": "自身获得多个X【Buff】*Y",
         "Properties": [
             {
                 "ID": "value1",
@@ -2050,20 +2131,20 @@
     "129": {
         "ID": 129,
         "IDName": "id",
-        "Name": "功能24+该功能则不触发[使用技能时触发]",
-        "Desc": "功能24+该功能则不触发[使用技能时触发]",
+        "Name": "特性24+该特性则不触发[使用技能时触发]",
+        "Desc": "特性24+该特性则不触发[使用技能时触发]",
         "Properties": []
     },
     "130": {
         "ID": 130,
         "IDName": "id",
-        "Name": "如果满足功能X则触发Y功能，否则触发Z功能",
+        "Name": "如果满足特性X则触发Y特性，否则触发Z特性",
         "Desc": "逻辑判定，如果满足特性x则触发Y列特性，否则则触发Z列特性",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 功能",
+                "Desc": "X 特性",
                 "SpecialDrawer" :[
                     "SeidDrawer"
                 ]
@@ -2071,7 +2152,7 @@
             {
                 "ID": "value2",
                 "Type": "IntArray",
-                "Desc": "Y 功能 数组",
+                "Desc": "Y 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2079,7 +2160,7 @@
             {
                 "ID": "value3",
                 "Type": "IntArray",
-                "Desc": "Z 功能 数组",
+                "Desc": "Z 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2089,13 +2170,13 @@
     "131": {
         "ID": 131,
         "IDName": "id",
-        "Name": "如果满足功能X则触发Y功能，否则触发Z功能",
+        "Name": "如果满足特性X则触发Y特性，否则触发Z特性",
         "Desc": "逻辑判定，如果满足特性x则触发Y列特性，否则则触发Z列特性（与130相同，用于额外触发）",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 功能",
+                "Desc": "X 特性",
                 "SpecialDrawer" :[
                     "SeidDrawer"
                 ]
@@ -2103,7 +2184,7 @@
             {
                 "ID": "value2",
                 "Type": "IntArray",
-                "Desc": "Y 功能 数组",
+                "Desc": "Y 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2111,7 +2192,7 @@
             {
                 "ID": "value3",
                 "Type": "IntArray",
-                "Desc": "Z 功能 数组",
+                "Desc": "Z 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2121,13 +2202,13 @@
     "132": {
         "ID": 132,
         "IDName": "id",
-        "Name": "如果满足功能X则触发Y功能，否则触发Z功能",
+        "Name": "如果满足特性X则触发Y特性，否则触发Z特性",
         "Desc": "逻辑判定，如果满足特性x则触发Y列特性，否则则触发Z列特性（与130相同，用于额外触发）",
         "Properties": [
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 功能",
+                "Desc": "X 特性",
                 "SpecialDrawer" :[
                     "SeidDrawer"
                 ]
@@ -2135,7 +2216,7 @@
             {
                 "ID": "value2",
                 "Type": "IntArray",
-                "Desc": "Y 功能 数组",
+                "Desc": "Y 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2143,7 +2224,7 @@
             {
                 "ID": "value3",
                 "Type": "IntArray",
-                "Desc": "Z 功能 数组",
+                "Desc": "Z 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2159,17 +2240,26 @@
             {
                 "ID": "target",
                 "Type": "Int",
-                "Desc": "目标(1自身，2敌方)"
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
             },
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X 属性"
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
             },
             {
                 "ID": "value2",
                 "Type": "Int",
-                "Desc": "Y 属性"
+                "Desc": "Y 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
             }
         ]
     },
@@ -2182,7 +2272,10 @@
             {
                 "ID": "target",
                 "Type": "Int",
-                "Desc": "目标(1自身，2敌方)"
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
             },
             {
                 "ID": "value1",
@@ -2223,8 +2316,8 @@
     "136": {
         "ID": 136,
         "IDName": "id",
-        "Name": "当指定Buff触发时，不在触发该Buff的后续特效，而是触发指定功能",
-        "Desc": "当X【Buff】触发时，不在触发X【Buff】后续功能，而是触发Y功能",
+        "Name": "当指定Buff触发时，不在触发该Buff的后续特性，而是触发指定特性",
+        "Desc": "当X【Buff】触发时，不在触发X【Buff】后续特性，而是触发Y特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -2237,7 +2330,7 @@
             {
                 "ID": "value2",
                 "Type": "IntArray",
-                "Desc": "Y 功能 数组",
+                "Desc": "Y 特性 数组",
                 "SpecialDrawer" :[
                     "SeidArrayDrawer"
                 ]
@@ -2266,7 +2359,10 @@
             {
                 "ID": "target",
                 "Type": "Int",
-                "Desc": "目标(1自身，2敌方)"
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
             },
             {
                 "ID": "value1",
@@ -2286,30 +2382,86 @@
     "139": {
         "ID": 139,
         "IDName": "id",
-        "Name": "（技能本身需要配置特性139）后续特效额外触发Y次",
-        "Desc": "（技能本身需要配置特性139）后续特效额外触发Y次",
-        "Properties": []
+        "Name": "后续特性额外触发Y次（技能需要有特性139）",
+        "Desc": "后续特性额外触发Y次（技能需要有特性139）",
+        "Properties": [
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 额外触发次数"
+            }
+        ]
     },
     "140": {
         "ID": 140,
         "IDName": "id",
-        "Name": "释放X属性技能将额外消耗Y张Z属性灵气",
-        "Desc": "释放X属性技能将额外消耗Y张Z属性灵气",
-        "Properties": []
+        "Name": "释放指定属性技能将额外消耗属性灵气",
+        "Desc": "释放X属性技能将额外消耗Y点Z属性灵气",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 灵气数"
+            },
+            {
+                "ID": "value3",
+                "Type": "Int",
+                "Desc": "Z 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
+            }
+        ]
     },
     "141": {
         "ID": 141,
         "IDName": "id",
-        "Name": "造成/受到的伤害提升/降低X%",
-        "Desc": "造成/受到的伤害提升/降低X%",
-        "Properties": []
+        "Name": "造成和受到的伤害提升/降低",
+        "Desc": "造成和受到的伤害提升/降低X*100%（正数提升，负数降低）",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Float",
+                "Desc": "X 百分比(小数)"
+            }
+        ]
     },
     "142": {
         "ID": 142,
         "IDName": "id",
-        "Name": "（对手/自己）的XBuff层数（提升/降低）X%",
-        "Desc": "（对手/自己）的XBuff层数（提升/降低）X%",
-        "Properties": []
+        "Name": "对手/自己的指定Buff层数提升/降低百分比",
+        "Desc": "对手/自己的X【Buff】层数提升/降低Y*100%（正数提升，负数降低）",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Float",
+                "Desc": "Y 百分比(小数)"
+            }
+        ]
     },
     "143": {
         "ID": 143,
@@ -2321,16 +2473,52 @@
     "144": {
         "ID": 144,
         "IDName": "id",
-        "Name": "释放X技能将额外消耗Y张Z属性灵气",
-        "Desc": "释放X技能将额外消耗Y张Z属性灵气",
-        "Properties": []
+        "Name": "释放指定技能将额外消耗属性灵气",
+        "Desc": "释放X技能将额外消耗Y点Z属性灵气",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 技能"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 消耗灵气"
+            },
+            {
+                "ID": "value3",
+                "Type": "Int",
+                "Desc": "Z 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
+            }
+        ]
     },
     "145": {
         "ID": 145,
         "IDName": "id",
         "Name": "将X【Buff】的移除类型调整为Y",
         "Desc": "将X【Buff】的移除类型调整为Y",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 移除类型",
+                "SpecialDrawer": [
+                    "BuffRemoveTriggerTypeDrawer"
+                ]
+            }
+        ]
     },
     "146": {
         "ID": 146,
@@ -2343,140 +2531,301 @@
         "ID": 147,
         "IDName": "id",
         "Name": "恢复Buff层数点血量",
-        "Desc": "恢复Buff层数点血量",
-        "Properties": []
+        "Desc": "恢复X【Buff】层数点血量",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "148": {
         "ID": 148,
         "IDName": "id",
         "Name": "免疫X属性伤害",
         "Desc": "免疫X属性伤害",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            }
+        ]
     },
     "149": {
         "ID": 149,
         "IDName": "id",
-        "Name": "获得X【Buff】Y*层数，Y为受到的伤害量",
+        "Name": "获得根据受到伤害获得Buff",
         "Desc": "获得X【Buff】Y*层数，Y为受到的伤害量",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "IntArray",
+                "Desc": "X BuffID 数组",
+                "SpecialDrawer": [
+                    "BuffArrayDrawer"
+                ]
+            }
+        ]
     },
     "150": {
         "ID": 150,
         "IDName": "id",
-        "Name": "若上一次使用的是X属性技能，则触发后续特效",
-        "Desc": "若上一次使用的是X属性技能，则触发后续特效",
-        "Properties": []
+        "Name": "若上一次使用的是X属性技能，则触发后续特性",
+        "Desc": "若上一次使用的是X属性技能，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
+            }
+        ]
     },
     "151": {
         "ID": 151,
         "IDName": "id",
-        "Name": "若此技能以对手为目标，则触发后续特效",
-        "Desc": "若此技能以对手为目标，则触发后续特效",
+        "Name": "若此技能以对手为目标，则触发后续特性",
+        "Desc": "若此技能以对手为目标，则触发后续特性",
         "Properties": []
     },
     "152": {
         "ID": 152,
         "IDName": "id",
-        "Name": "若此技能基础伤害大于0，则触发后续特效",
-        "Desc": "若此技能基础伤害大于0，则触发后续特效",
+        "Name": "若此技能基础伤害大于0，则触发后续特性",
+        "Desc": "若此技能基础伤害大于0，则触发后续特性",
         "Properties": []
     },
     "153": {
         "ID": 153,
         "IDName": "id",
-        "Name": "待定开发逻辑。（技能效果：脱离【化焰】状态时，恢复等同于【化焰】层数的血量。）",
+        "Name": "【未实装】待定开发逻辑。",
         "Desc": "待定开发逻辑。（技能效果：脱离【化焰】状态时，恢复等同于【化焰】层数的血量。）",
         "Properties": []
     },
     "154": {
         "ID": 154,
         "IDName": "id",
-        "Name": "在自身没有X【Buff】的情况下，获得X【Buff】时触发（待定）",
+        "Name": "【未实装】在自身没有X【Buff】的情况下，获得X【Buff】时触发",
         "Desc": "在自身没有X【Buff】的情况下，获得X【Buff】时触发（待定）",
         "Properties": []
     },
     "155": {
         "ID": 155,
         "IDName": "id",
-        "Name": "若上一次使用的技能和本次相同，则触发后续特效",
-        "Desc": "若上一次使用的技能和本次相同，则触发后续特效",
+        "Name": "若上一次使用的技能和本次相同，则触发后续特性",
+        "Desc": "若上一次使用的技能和本次相同，则触发后续特性",
         "Properties": []
     },
     "156": {
         "ID": 156,
         "IDName": "id",
-        "Name": "（对手/自己）每有一种不同的X类【Buff】，则触发一次后续特效（如：受到的Z属性伤害+Y%）",
-        "Desc": "（对手/自己）每有一种不同的X类【Buff】，则触发一次后续特效（如：受到的Z属性伤害+Y%）",
-        "Properties": []
+        "Name": "对手/自己每有一种不同的X类Buff，则触发一次后续特性",
+        "Desc": "对手/自己每有一种不同的X类【Buff】，则触发一次后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X Buff类型",
+                "SpecialDrawer" : [
+                    "BuffTypeDrawer"
+                ]
+            }
+        ]
     },
     "157": {
         "ID": 157,
         "IDName": "id",
-        "Name": "若（对手/自己）连续X回合拥有Y【Buff】，则触发后续特效",
-        "Desc": "若（对手/自己）连续X回合拥有Y【Buff】，则触发后续特效",
-        "Properties": []
+        "Name": "若对手/自己连续X回合拥有Y【Buff】，则触发后续特性",
+        "Desc": "若（对手/自己）连续X回合拥有Y【Buff】，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 回合数"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "158": {
         "ID": 158,
         "IDName": "id",
-        "Name": "若（对手/自己）没有灵气，则触发后续特效",
-        "Desc": "若（对手/自己）没有灵气，则触发后续特效",
-        "Properties": []
+        "Name": "若对手/自己没有灵气，则触发后续特性",
+        "Desc": "若对手/自己没有灵气，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            }
+        ]
     },
     "159": {
         "ID": 159,
         "IDName": "id",
-        "Name": "若（对手/自己）的有XBuff层数（大于/小于/等于）Y层，则触发后续特效",
-        "Desc": "若（对手/自己）的有XBuff层数（大于/小于/等于）Y层，则触发后续特效",
-        "Properties": []
+        "Name": "判断自身/对手的Buff层数，满足则触发后续特性",
+        "Desc": "若（对手/自己）的有X【Buff】层数（大于/小于/等于）Y层，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 层"
+            }
+        ]
     },
     "160": {
         "ID": 160,
         "IDName": "id",
-        "Name": "若本回合累计造成X次以上的Y属性伤害，则触发后续特效",
-        "Desc": "若本回合累计造成X次以上的Y属性伤害，则触发后续特效",
-        "Properties": []
+        "Name": "若本回合累计造成X次以上的Y属性伤害，则触发后续特性",
+        "Desc": "若本回合累计造成X次以上的Y属性伤害，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 次"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            }
+        ]
     },
     "161": {
         "ID": 161,
         "IDName": "id",
-        "Name": "若灵气数量（大于/小于/等于）灵气上限，则触发后续特效",
-        "Desc": "若灵气数量（大于/小于/等于）灵气上限，则触发后续特效",
-        "Properties": []
+        "Name": "判断灵气数量与灵气上限，满足则触发后续特性",
+        "Desc": "若灵气数量（大于/小于/等于）灵气上限，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            }
+        ]
     },
     "162": {
         "ID": 162,
         "IDName": "id",
-        "Name": "X特性（技能）判定成功后，则触发后续特效",
-        "Desc": "X特性（技能）判定成功后，则触发后续特效",
-        "Properties": []
+        "Name": "指定技能特性判定成功后，则触发后续特性",
+        "Desc": "X特性（技能）判定成功后，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 技能特性"
+            }
+        ]
     },
     "163": {
         "ID": 163,
         "IDName": "id",
-        "Name": "若有学习悟道天赋，则触发后续特效",
-        "Desc": "若有学习悟道天赋，则触发后续特效",
+        "Name": "若有学习悟道天赋，则触发后续特性",
+        "Desc": "若有学习悟道天赋，则触发后续特性",
         "Properties": []
     },
     "164": {
         "ID": 164,
         "IDName": "id",
-        "Name": "若（获得/移除）的BuffId为X，则触发后续特效",
-        "Desc": "若（获得/移除）的BuffId为X，则触发后续特效",
-        "Properties": []
+        "Name": "若获得/移除的BuffId为X，则触发后续特性",
+        "Desc": "若获得/移除的BuffId为X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "165": {
         "ID": 165,
         "IDName": "id",
-        "Name": "若没有XBuff，则触发后续特效",
-        "Desc": "若没有XBuff，则触发后续特效",
-        "Properties": []
+        "Name": "若没有XBuff，则触发后续特性",
+        "Desc": "若没有XBuff，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "166": {
         "ID": 166,
         "IDName": "id",
-        "Name": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特效",
-        "Desc": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特效",
+        "Name": "使用指定灵气组合释放此技能时，触发后续特性",
+        "Desc": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特性",
         "Properties": [
             {
                 "ID": "value1",
@@ -2488,85 +2837,212 @@
     "167": {
         "ID": 167,
         "IDName": "id",
-        "Name": "若（对手/自己）拥有X类Buff，则触发后续特效",
-        "Desc": "若（对手/自己）拥有X类Buff，则触发后续特效",
-        "Properties": []
+        "Name": "若（对手/自己）拥有X类Buff，则触发后续特性",
+        "Desc": "若（对手/自己）拥有X类Buff，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X Buff类型",
+                "SpecialDrawer" : [
+                    "BuffTypeDrawer"
+                ]
+            }
+        ]
     },
     "168": {
         "ID": 168,
         "IDName": "id",
-        "Name": "若（对手/自己）X类Buff的数量（大于小于等于）Y，则触发后续特效",
-        "Desc": "若（对手/自己）X类Buff的数量（大于小于等于）Y，则触发后续特效",
-        "Properties": []
+        "Name": "若对手/自己X类Buff的数量满足条件，则触发后续特性",
+        "Desc": "若（对手/自己）X类Buff的数量（大于小于等于）Y，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X Buff类型",
+                "SpecialDrawer" : [
+                    "BuffTypeDrawer"
+                ]
+            },
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 层"
+            }
+        ]
     },
     "169": {
         "ID": 169,
         "IDName": "id",
-        "Name": "若该技能有X技能特性时，触发后续特效",
-        "Desc": "若该技能有X技能特性时，触发后续特效",
-        "Properties": []
+        "Name": "若该技能有X技能特性时，触发后续特性",
+        "Desc": "若该技能有X技能特性时，触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 技能特性"
+            }
+        ]
     },
     "170": {
         "ID": 170,
         "IDName": "id",
-        "Name": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特效",
-        "Desc": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特效",
-        "Properties": []
+        "Name": "使用指定灵气组合释放此技能时，触发后续特性（效果同166）",
+        "Desc": "使用（1相生/2相克/3相同）的灵气释放此技能时，触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "类型"
+            }
+        ]
     },
     "171": {
         "ID": 171,
         "IDName": "id",
         "Name": "每累积受到X点伤害，获得Y【Buff】*Z（内伤专用，其他Buff勿用）",
         "Desc": "每累积受到X点伤害，获得Y【Buff】*Z（内伤专用，其他Buff勿用）",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 伤害"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value3",
+                "Type": "Int",
+                "Desc": "Z Buff层数"
+            }
+        ]
     },
     "172": {
         "ID": 172,
         "IDName": "id",
-        "Name": "判断Buff自身层数小于等于X，则触发后续特效",
-        "Desc": "判断Buff自身层数小于等于X，则触发后续特效",
-        "Properties": []
+        "Name": "判断Buff自身层数小于等于X，则触发后续特性",
+        "Desc": "判断Buff自身层数小于等于X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X Buff层数"
+            }
+        ]
     },
     "173": {
         "ID": 173,
         "IDName": "id",
-        "Name": "伤害超过X，则触发后续特效",
-        "Desc": "伤害超过X，则触发后续特效",
-        "Properties": []
+        "Name": "伤害超过X，则触发后续特性",
+        "Desc": "伤害超过X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 伤害"
+            }
+        ]
     },
     "174": {
         "ID": 174,
         "IDName": "id",
-        "Name": "若遁速大于对方则触发后续特效",
-        "Desc": "若遁速大于对方则触发后续特效",
+        "Name": "若遁速大于对方则触发后续特性",
+        "Desc": "若遁速大于对方则触发后续特性",
         "Properties": []
     },
     "175": {
         "ID": 175,
         "IDName": "id",
-        "Name": "若本回合累积受到的伤害大于等于X点，则触发后续特效",
-        "Desc": "若本回合累积受到的伤害大于等于X点，则触发后续特效",
-        "Properties": []
+        "Name": "若本回合累积受到的伤害大于等于X点，则触发后续特性",
+        "Desc": "若本回合累积受到的伤害大于等于X点，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 伤害"
+            }
+        ]
     },
     "176": {
         "ID": 176,
         "IDName": "id",
-        "Name": "若（对手/自己）的X【Buff】触发，触发后续特效",
-        "Desc": "若（对手/自己）的X【Buff】触发，触发后续特效",
-        "Properties": []
+        "Name": "若对手/自己的指定Buff触发，触发后续特性",
+        "Desc": "若对手/自己的X【Buff】触发，触发后续特性",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "177": {
         "ID": 177,
         "IDName": "id",
-        "Name": "每造成X属性技能伤害Y次，则触发后续特效",
-        "Desc": "每造成X属性技能伤害Y次，则触发后续特效",
-        "Properties": []
+        "Name": "每造成X属性技能伤害Y次，则触发后续特性",
+        "Desc": "每造成X属性技能伤害Y次，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 次数"
+            }
+        ]
     },
     "178": {
         "ID": 178,
         "IDName": "id",
-        "Name": "若神识大于对方则触发后续特效",
-        "Desc": "若神识大于对方则触发后续特效",
+        "Name": "若神识大于对方则触发后续特性",
+        "Desc": "若神识大于对方则触发后续特性",
         "Properties": []
     },
     "179": {
@@ -2574,27 +3050,39 @@
         "IDName": "id",
         "Name": "恢复等同于当前灵气数量*X的生命值",
         "Desc": "恢复等同于当前灵气数量*X的生命值",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 恢复值"
+            }
+        ]
     },
     "180": {
         "ID": 180,
         "IDName": "id",
-        "Name": "若自身灵气数量大于/小于X，则触发后续特效",
-        "Desc": "若自身灵气数量大于/小于X，则触发后续特效",
-        "Properties": []
+        "Name": "若自身灵气数量大于/小于X，则触发后续特性",
+        "Desc": "若自身灵气数量大于/小于X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 灵气数量"
+            }
+        ]
     },
     "181": {
         "ID": 181,
         "IDName": "id",
-        "Name": "若自身灵气数量大于/小于X，则触发后续特效",
-        "Desc": "若自身灵气数量大于/小于X，则触发后续特效",
+        "Name": "若战斗类型为筑基，则成福安后续特性",
+        "Desc": "若战斗类型为筑基，则成福安后续特性",
         "Properties": []
     },
     "182": {
         "ID": 182,
         "IDName": "id",
-        "Name": "若战斗类型不为新手引导，则触发后续特效",
-        "Desc": "若战斗类型不为新手引导，则触发后续特效",
+        "Name": "若战斗类型不为新手引导，则触发后续特性",
+        "Desc": "若战斗类型不为新手引导，则触发后续特性",
         "Properties": []
     },
     "183": {
@@ -2614,58 +3102,135 @@
     "185": {
         "ID": 185,
         "IDName": "id",
-        "Name": "对方获得一个Buff（X）*Y（127的对方版）",
-        "Desc": "对方获得一个Buff（X）*Y（127的对方版）",
-        "Properties": []
+        "Name": "对方获得多个Buff",
+        "Desc": "对方获得多个X【Buff】*Y",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "IntArray",
+                "Desc": "X BuffID 数组",
+                "SpecialDrawer": [
+                    "BuffArrayDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "IntArray",
+                "Desc": "Y Buff层数 数组"
+            }
+        ]
     },
     "186": {
         "ID": 186,
         "IDName": "id",
         "Name": "获得X【Buff】Y*层数，Y为造成的技能伤害量",
         "Desc": "获得X【Buff】Y*层数，Y为造成的技能伤害量",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 伤害量"
+            }
+        ]
     },
     "187": {
         "ID": 187,
         "IDName": "id",
-        "Name": "转移受到伤害的x%给对方（受到伤害时减伤x%,并将这一部分转移给对方）",
+        "Name": "转移一定受到伤害给对方",
         "Desc": "转移受到伤害的x%给对方（受到伤害时减伤x%,并将这一部分转移给对方）",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 转移百分比"
+            }
+        ]
     },
     "188": {
         "ID": 188,
         "IDName": "id",
         "Name": "此Buff的层数上限等于X属性的基础值",
         "Desc": "此Buff的层数上限等于X属性的基础值",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性类型(1.神识/2.遁速)"
+            }
+        ]
     },
     "189": {
         "ID": 189,
         "IDName": "id",
-        "Name": "检测自己神识，若小于0则触发后续特效",
-        "Desc": "检测自己神识，若小于0则触发后续特效",
+        "Name": "检测自己神识，若小于0则触发后续特性",
+        "Desc": "检测自己神识，若小于0则触发后续特性",
         "Properties": []
     },
     "190": {
         "ID": 190,
         "IDName": "id",
-        "Name": "（对方/自身）获得X层YBuff（X为全局变量X的值）",
-        "Desc": "（对方/自身）获得X层YBuff（X为全局变量X的值）",
-        "Properties": []
+        "Name": "对方/自身根据全局变量获得Buff",
+        "Desc": "对方/自身获得X层YBuff（X为全局变量X的值）",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "IntArray",
+                "Desc": "X 全局变量ID 数组"
+            },
+            {
+                "ID": "value2",
+                "Type": "IntArray",
+                "Desc": "BuffID 数组",
+                "SpecialDrawer": [
+                    "BuffArrayDrawer"
+                ]
+            }
+        ]
     },
     "191": {
         "ID": 191,
         "IDName": "id",
-        "Name": "对（对手/自己）造成等同于本回合吸收灵气数量*层数点伤害。",
-        "Desc": "对（对手/自己）造成等同于本回合吸收灵气数量*层数点伤害。",
-        "Properties": []
+        "Name": "对对手/自己造成等同于本回合吸收灵气数量*层数点伤害。",
+        "Desc": "对对手/自己造成等同于本回合吸收灵气数量*层数点伤害。",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            }
+        ]
     },
     "192": {
         "ID": 192,
         "IDName": "id",
-        "Name": "造成/受到的Y属性伤害提升/降低X%*层数（参考特性141，加个属性）",
-        "Desc": "造成/受到的Y属性伤害提升/降低X%*层数（参考特性141，加个属性）",
-        "Properties": []
+        "Name": "造成与受到的指定属性伤害根据Buff层数提升/降低",
+        "Desc": "造成与受到的Y属性伤害提升/降低X%*层数（参考特性141，加个属性）",
+        "Properties": [
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Float",
+                "Desc": "X 百分比(小数)"
+            }
+        ]
     },
     "193": {
         "ID": 193,
@@ -2679,91 +3244,237 @@
         "IDName": "id",
         "Name": "每有一层XBuff，遁速降低Y点",
         "Desc": "每有一层XBuff，遁速降低Y点",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 降低值"
+            }
+        ]
     },
     "195": {
         "ID": 195,
         "IDName": "id",
         "Name": "每消散X点A属性灵气，获得YBuff*Z*层数",
         "Desc": "每消散X点A属性灵气，获得YBuff*Z*层数",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 消散灵气"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "A 属性灵气",
+                "SpecialDrawer":[
+                    "ElementTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value3",
+                "Type": "Int",
+                "Desc": "Y BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            },
+            {
+                "ID": "value4",
+                "Type": "Int",
+                "Desc": "Z Buff层数"
+            }
+        ]
     },
     "196": {
         "ID": 196,
         "IDName": "id",
-        "Name": "若本回合释放技能的次数（大于/等于/小于）X，则触发后续特效。",
-        "Desc": "若本回合释放技能的次数（大于/等于/小于）X，则触发后续特效。",
-        "Properties": []
+        "Name": "若本回合释放技能的次数满足条件，则触发后续特性。",
+        "Desc": "若本回合释放技能的次数（大于/等于/小于）X，则触发后续特性。",
+        "Properties": [
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 层"
+            }
+        ]
     },
     "197": {
         "ID": 197,
         "IDName": "id",
-        "Name": "（对手/自己）每有一层X【Buff】，则触发一次后续特效（参考特性156）",
-        "Desc": "（对手/自己）每有一层X【Buff】，则触发一次后续特效（参考特性156）",
-        "Properties": []
+        "Name": "对手/自己每有一层X【Buff】，则触发一次后续特性（参考特性156）",
+        "Desc": "对手/自己每有一层X【Buff】，则触发一次后续特性（参考特性156）",
+        "Properties": [
+            {
+                "ID": "target",
+                "Type": "Int",
+                "Desc": "目标",
+                "SpecialDrawer": [
+                    "TargetTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X BuffID",
+                "SpecialDrawer": [
+                    "BuffDrawer"
+                ]
+            }
+        ]
     },
     "198": {
         "ID": 198,
         "IDName": "id",
-        "Name": "此次技能造成的伤害提升Y点（Y为此技能消耗的灵气数）（参考特性117）",
-        "Desc": "此次技能造成的伤害提升Y点（Y为此技能消耗的灵气数）（参考特性117）",
+        "Name": "此次技能造成的伤害提升Y*Buff层数点（Y为此技能消耗的灵气数）",
+        "Desc": "此次技能造成的伤害提升Y*Buff层数点（Y为此技能消耗的灵气数）",
         "Properties": []
     },
     "199": {
         "ID": 199,
         "IDName": "id",
-        "Name": "造成的X属性技能伤害提升Y*（该技能消耗的灵气数）%",
+        "Name": "造成的指定属性技能伤害提升根据消耗灵气提升百分比伤害",
         "Desc": "造成的X属性技能伤害提升Y*（该技能消耗的灵气数）%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性伤害",
+                "SpecialDrawer":[
+                    "AttackTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "Y 提升伤害"
+            }
+        ]
     },
     "200": {
         "ID": 200,
         "IDName": "id",
         "Name": "对经脉造成（恢复）X*层数点伤害",
-        "Desc": "对经脉造成（恢复）X*层数点伤害",
-        "Properties": []
+        "Desc": "对经脉造成（恢复）X*层数点伤害（正数恢复，负数伤害）",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 伤害/恢复"
+            }
+        ]
     },
     "201": {
         "ID": 201,
         "IDName": "id",
         "Name": "对意志造成（恢复）X*层数点伤害",
-        "Desc": "对意志造成（恢复）X*层数点伤害",
-        "Properties": []
+        "Desc": "对意志造成（恢复）X*层数点伤害（正数恢复，负数伤害）",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 伤害/恢复"
+            }
+        ]
     },
     "202": {
         "ID": 202,
         "IDName": "id",
         "Name": "【化婴】属性加减X*层数",
         "Desc": "【化婴】属性加减X*层数",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 属性变化"
+            }
+        ]
     },
     "203": {
         "ID": 203,
         "IDName": "id",
         "Name": "金丹生命加减X*层数",
         "Desc": "金丹生命加减X*层数",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 生命加减"
+            }
+        ]
     },
     "204": {
         "ID": 204,
         "IDName": "id",
         "Name": "1经脉/2意志 受到的伤害提升X%",
         "Desc": "1经脉/2意志 受到的伤害提升X%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "目标 1经脉/2意志"
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "X 提升百分比"
+            }
+        ]
     },
     "205": {
         "ID": 205,
         "IDName": "id",
         "Name": "【化婴】属性的增加速度提高（降低）X%",
         "Desc": "【化婴】属性的增加速度提高（降低）X%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 变化百分比"
+            }
+        ]
     },
     "206": {
         "ID": 206,
         "IDName": "id",
-        "Name": "若经脉/意志大于（小于）X，则触发后续特效",
-        "Desc": "若经脉/意志大于（小于）X，则触发后续特效",
-        "Properties": []
+        "Name": "若经脉/意志大于（小于）X，则触发后续特性",
+        "Desc": "若经脉/意志大于（小于）X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "目标 1经脉/2意志"
+            },
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value2",
+                "Type": "Int",
+                "Desc": "X 判断值"
+            }
+        ]
     },
     "207": {
         "ID": 207,
@@ -2777,28 +3488,52 @@
         "IDName": "id",
         "Name": "金丹生命加减受损的X%",
         "Desc": "金丹生命加减受损的X%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 变化百分比"
+            }
+        ]
     },
     "209": {
         "ID": 209,
         "IDName": "id",
         "Name": "对金丹造成的伤害提升（降低）X",
         "Desc": "对金丹造成的伤害提升（降低）X",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 变化百分比"
+            }
+        ]
     },
     "210": {
         "ID": 210,
         "IDName": "id",
         "Name": "对金丹造成的伤害提升（降低）X%",
         "Desc": "对金丹造成的伤害提升（降低）X%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 变化百分比"
+            }
+        ]
     },
     "211": {
         "ID": 211,
         "IDName": "id",
         "Name": "金丹受到的伤害提升（降低）X%",
         "Desc": "金丹受到的伤害提升（降低）X%",
-        "Properties": []
+        "Properties": [
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 变化百分比"
+            }
+        ]
     },
     "212": {
         "ID": 212,
@@ -2810,9 +3545,23 @@
     "213": {
         "ID": 213,
         "IDName": "id",
-        "Name": "若化婴属性大于（小于）X，则触发后续特效",
-        "Desc": "若化婴属性大于（小于）X，则触发后续特效",
-        "Properties": []
+        "Name": "若化婴属性大于（小于）X，则触发后续特性",
+        "Desc": "若化婴属性大于（小于）X，则触发后续特性",
+        "Properties": [
+            {
+                "ID": "panduan",
+                "Type": "String",
+                "Desc": "判断",
+                "SpecialDrawer": [
+                    "ComparisonOperatorTypeDrawer"
+                ]
+            },
+            {
+                "ID": "value1",
+                "Type": "Int",
+                "Desc": "X 判断值"
+            }
+        ]
     },
     "300": {
         "ID": 300,

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using UniRx;
 
-public partial class UISeidEditorBoxPanel : IUIClose
+public partial class UIModSeidEditorBoxPanel : IUIClose
 {
     public Action OnCloseCallback;
     public ModSeidData SeidData { get; set; }
@@ -61,9 +62,71 @@ public partial class UISeidEditorBoxPanel : IUIClose
 
                 CreateIntArraySpecialDrawer(inputTextDrawer, seidProperty, sIntArray);
             }
+            else if (seidProperty.Type == ModSeidPropertyType.Float)
+            {
+                var inputFloatNumberDrawer = AddEditorDrawer<UIComInputFloatNumberDrawer>();
+                inputFloatNumberDrawer.Title = seidProperty.Desc;
+                var sFloat = seidData.GetToken<ModSFloat>(seidProperty.ID);
+                inputFloatNumberDrawer.Content = sFloat.Value.ToString("F");
+                inputFloatNumberDrawer.EndEdit = i =>
+                {
+                    sFloat.Value = i;
+                    RefreshUI();
+                };
+            }
+            else if (seidProperty.Type == ModSeidPropertyType.String)
+            {
+                var inputTextDrawer = AddEditorDrawer<UIComInputTextDrawer>();
+                inputTextDrawer.Title = seidProperty.Desc;
+                var sString = seidData.GetToken<ModSString>(seidProperty.ID);
+                inputTextDrawer.Content = sString.Value;
+                inputTextDrawer.EndEdit = i =>
+                {
+                    sString.Value = i; 
+                    RefreshUI();
+                };
+
+                CreateStringSpecialDrawer(inputTextDrawer, seidProperty, sString);
+            }
         }
 
         RefreshUI();
+    }
+
+    private void CreateStringSpecialDrawer(UIComInputTextDrawer inputTextDrawer, ModSeidProperty seidProperty, ModSString sString)
+    {
+        foreach (var drawerId in seidProperty.SpecialDrawer)
+        {
+            switch (drawerId)
+            {
+                case "ComparisonOperatorTypeDrawer":
+                {
+                    var targetDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    targetDrawer.Title = "比较符";
+                    
+                    void OnDrawerRefresh()
+                    {
+                        var typeValue = sString.Value;
+                        var typeList = ModMgr.Instance.ComparisonOperatorTypes
+                            .Select(type => $"{type.ID} {type.Desc}").ToList();
+                        targetDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.ComparisonOperatorTypes.FindIndex(type => type.ID == typeValue);
+                        targetDrawer.Select(typeIndex);
+                        targetDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.ComparisonOperatorTypes[index].ID;
+                            inputTextDrawer.Content = typeId;
+                        };
+                    }
+                    inputTextDrawer.EndEdit += i =>
+                    {
+                        OnDrawerRefresh();
+                    };
+                    OnDrawerRefresh();
+                    break;
+                }
+            }
+        }
     }
 
     private void CreateIntSpecialDrawer(UIComInputNumberDrawer inputNumberDrawer,ModSeidProperty seidProperty,ModSInt sInt)
@@ -77,7 +140,7 @@ public partial class UISeidEditorBoxPanel : IUIClose
                     var buffDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
                     buffDrawer.Title = "Buff描述";
 
-                    void OnBuffDrawerRefresh()
+                    void OnDrawerRefresh()
                     {
                         var buffData = ModMgr.Instance.CurProject.FindBuff(sInt.Value);
                         if (buffData != null)
@@ -92,17 +155,17 @@ public partial class UISeidEditorBoxPanel : IUIClose
 
                     inputNumberDrawer.EndEdit += i =>
                     {
-                        OnBuffDrawerRefresh();
+                        OnDrawerRefresh();
                     };
-                    OnBuffDrawerRefresh();
+                    OnDrawerRefresh();
                     break;
                 }
                 case "SeidDrawer":
                 {
                     var seidDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
-                    seidDrawer.Title = "功能描述";
+                    seidDrawer.Title = "特性描述";
                     
-                    void OnSeidDrawerRefresh()
+                    void OnDrawerRefresh()
                     {
                         if (ModMgr.Instance.BuffSeidMetas.TryGetValue(sInt.Value,out var seidMeta))
                         {
@@ -116,17 +179,17 @@ public partial class UISeidEditorBoxPanel : IUIClose
 
                     inputNumberDrawer.EndEdit += i =>
                     {
-                        OnSeidDrawerRefresh();
+                        OnDrawerRefresh();
                     };
-                    OnSeidDrawerRefresh();
+                    OnDrawerRefresh();
                     break;
                 }
                 case "BuffTypeDrawer":
                 {
                     var seidDrawer = AddEditorDrawer<UIComDropdownDrawer>();
-                    seidDrawer.Title = "Buff类型选择器";
+                    seidDrawer.Title = "Buff类型";
                     
-                    void OnSeidDrawerRefresh()
+                    void OnDrawerRefresh()
                     {
                         var typeValue = sInt.Value;
                         var typeList = ModMgr.Instance.BuffDataBuffTypes
@@ -143,9 +206,117 @@ public partial class UISeidEditorBoxPanel : IUIClose
 
                     inputNumberDrawer.EndEdit += i =>
                     {
-                        OnSeidDrawerRefresh();
+                        OnDrawerRefresh();
                     };
-                    OnSeidDrawerRefresh();
+                    OnDrawerRefresh();
+                    break;
+                }
+                case "BuffRemoveTriggerTypeDrawer":
+                {
+                    var seidDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    seidDrawer.Title = "Buff移除类型";
+                    
+                    void OnDrawerRefresh()
+                    {
+                        var typeValue = sInt.Value;
+                        var typeList = ModMgr.Instance.BuffDataRemoveTriggerTypes
+                            .Select(type => $"{type.ID} {type.Desc}").ToList();
+                        seidDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.BuffDataRemoveTriggerTypes.FindIndex(type => type.ID == typeValue);
+                        seidDrawer.Select(typeIndex);
+                        seidDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.BuffDataRemoveTriggerTypes[index].ID;
+                            inputNumberDrawer.Content = typeId.ToString();
+                        };
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnDrawerRefresh();
+                    };
+                    OnDrawerRefresh();
+                    break;
+                }
+                case "AttackTypeDrawer":
+                {
+                    var seidDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    seidDrawer.Title = "攻击类型";
+                    
+                    void OnDrawerRefresh()
+                    {
+                        var typeValue = sInt.Value;
+                        var typeList = ModMgr.Instance.AttackTypes
+                            .Select(type => $"{type.ID} {type.Desc}").ToList();
+                        seidDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.AttackTypes.FindIndex(type => type.ID == typeValue);
+                        seidDrawer.Select(typeIndex);
+                        seidDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.AttackTypes[index].ID;
+                            inputNumberDrawer.Content = typeId.ToString();
+                        };
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnDrawerRefresh();
+                    };
+                    OnDrawerRefresh();
+                    break;
+                }
+                case "ElementTypeDrawer":
+                {
+                    var attackTypeDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    attackTypeDrawer.Title = "攻击类型";
+                    
+                    void OnDrawerRefresh()
+                    {
+                        var typeValue = sInt.Value;
+                        var typeList = ModMgr.Instance.ElementTypes
+                            .Select(type => $"{type.ID} {type.Desc}").ToList();
+                        attackTypeDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.ElementTypes.FindIndex(type => type.ID == typeValue);
+                        attackTypeDrawer.Select(typeIndex);
+                        attackTypeDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.ElementTypes[index].ID;
+                            inputNumberDrawer.Content = typeId.ToString();
+                        };
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnDrawerRefresh();
+                    };
+                    OnDrawerRefresh();
+                    break;
+                }
+                case "TargetTypeDrawer":
+                {
+                    var targetDrawer = AddEditorDrawer<UIComDropdownDrawer>();
+                    targetDrawer.Title = "目标类型";
+                    
+                    void OnDrawerRefresh()
+                    {
+                        var typeValue = sInt.Value;
+                        var typeList = ModMgr.Instance.TargetTypes
+                            .Select(type => $"{type.ID} {type.Desc}").ToList();
+                        targetDrawer.SetOptions(typeList);
+                        var typeIndex = ModMgr.Instance.TargetTypes.FindIndex(type => type.ID == typeValue);
+                        targetDrawer.Select(typeIndex);
+                        targetDrawer.ValueChange = index =>
+                        {
+                            var typeId = ModMgr.Instance.TargetTypes[index].ID;
+                            inputNumberDrawer.Content = typeId.ToString();
+                        };
+                    }
+
+                    inputNumberDrawer.EndEdit += i =>
+                    {
+                        OnDrawerRefresh();
+                    };
+                    OnDrawerRefresh();
                     break;
                 }
             }
@@ -202,7 +373,7 @@ public partial class UISeidEditorBoxPanel : IUIClose
                 case "SeidArrayDrawer":
                 {
                     var seidDrawer = AddEditorDrawer<UIComTextWithContentDrawer>();
-                    seidDrawer.Title = "功能描述";
+                    seidDrawer.Title = "特性描述";
 
                     void OnSeidDrawerRefresh()
                     {
@@ -250,14 +421,14 @@ public partial class UISeidEditorBoxPanel : IUIClose
     
     public void OnCloseUI()
     {
-        UIMgr.Instance.DestroyPanel<UISeidEditorBoxPanel>();
+        UIMgr.Instance.DestroyPanel<UIModSeidEditorBoxPanel>();
         OnCloseCallback?.Invoke();
     }
 
     public static void ShowEditor(ModSeidData seidData, ModSeidMeta seidMeta,string title, 
         string okText = "确定", Action callback = null)
     {
-        var editor = UIMgr.Instance.GetPanel<UISeidEditorBoxPanel>(UILayer.Model);
+        var editor = UIMgr.Instance.GetPanel<UIModSeidEditorBoxPanel>(UILayer.Model);
         editor.OnCloseCallback = callback;
         editor.BindSeid(seidData,seidMeta);
         editor.txtTitle.text = title;

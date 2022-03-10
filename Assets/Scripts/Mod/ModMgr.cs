@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class ModMgr
 {
-    public const string EDITOR_VERSION = "0.1.0";
     public static ModMgr Instance { get; }
     
     public ModProject CurProject { get; set; }
@@ -22,6 +21,10 @@ public class ModMgr
     public List<ModBuffDataTriggerType> BuffDataTriggerTypes { get; set; }
     public List<ModBuffDataRemoveTriggerType> BuffDataRemoveTriggerTypes { get; set; }
     public List<ModBuffDataOverlayType> BuffDataOverlayTypes { get; set; }
+    public List<ModAttackType> AttackTypes { get; set; }
+    public List<ModElementType> ElementTypes { get; set; }
+    public List<ModComparisonOperatorType> ComparisonOperatorTypes { get; set; }
+    public List<ModTargetType> TargetTypes { get; set; }
     public Dictionary<int,ModAffixData> DefaultAffixData { get; set; }
     public Dictionary<int,ModBuffData> DefaultBuffData { get; set; }
 
@@ -68,6 +71,18 @@ public class ModMgr
         BuffDataOverlayTypes = JArray
             .Parse(ModUtils.LoadConfig("Meta/BuffOverlayType.json"))
             .ToObject<List<ModBuffDataOverlayType>>();
+        AttackTypes = JArray
+            .Parse(ModUtils.LoadConfig("Meta/AttackTypes.json"))
+            .ToObject<List<ModAttackType>>();
+        ElementTypes = JArray
+            .Parse(ModUtils.LoadConfig("Meta/ElementTypes.json"))
+            .ToObject<List<ModElementType>>();
+        ComparisonOperatorTypes = JArray
+            .Parse(ModUtils.LoadConfig("Meta/ComparisonOperatorTypes.json"))
+            .ToObject<List<ModComparisonOperatorType>>();
+        TargetTypes = JArray
+            .Parse(ModUtils.LoadConfig("Meta/TargetTypes.json"))
+            .ToObject<List<ModTargetType>>();
         
         DefaultAffixData = ModAffixData.Load(ModUtils.GetConfigPath("Data"))
             .ToDictionary(pair => pair.Value.ID, pair => pair.Value);

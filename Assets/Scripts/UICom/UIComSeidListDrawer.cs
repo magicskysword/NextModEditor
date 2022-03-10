@@ -91,7 +91,7 @@ public class UIComSeidListDrawer : UIComListDrawer
             if (SeidMetas.TryGetValue(seidItem.SeidID, out var seidMeta))
             {
                 var seidData = SeidDataGroup.GetOrCreateSeid(selectedItem.ID, seidItem.SeidID);
-                UISeidEditorBoxPanel.ShowEditor(seidData, seidMeta, $"Seid {seidMeta.ID} {seidMeta.Name} 编辑");
+                UIModSeidEditorBoxPanel.ShowEditor(seidData, seidMeta, $"Seid {seidMeta.ID} {seidMeta.Name} 编辑");
             }
         };
         OnBtnRemoveClick = item =>

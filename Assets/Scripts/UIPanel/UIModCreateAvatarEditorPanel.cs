@@ -22,6 +22,7 @@ using UnityEngine;
      #endregion
      public ModCreateAvatarData SelectedItem => (ModCreateAvatarData)SelectModData;
      public override IList DataList => BindProject.CreateAvatarData;
+     public override Type ItemType => typeof(ModCreateAvatarData);
 
      protected override void OnInitEditor()
      {
@@ -87,13 +88,13 @@ using UnityEngine;
              SelectedItem.SetTalentType(talentType);
          };
          
-         SeidListDrawer.Title = "功能";
+         SeidListDrawer.Title = "特性";
          SeidListDrawer.BindSeid(this,
              () => ModMgr.Instance.CreateAvatarSeidMetas,
              () => BindProject.CreateAvatarSeidDataGroup,
              () => SelectedItem.SeidList);
 
-         OuterSeidListDrawer.Title = "未加入功能";
+         OuterSeidListDrawer.Title = "未加入特性";
          OuterSeidListDrawer.BindSeid(this,
              () => ModMgr.Instance.CreateAvatarSeidMetas,
              () => BindProject.CreateAvatarSeidDataGroup,

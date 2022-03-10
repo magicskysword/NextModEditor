@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ public partial class UIModBuffEditorPanel : UIModCommonEditorFramePanel
     #endregion
     public ModBuffData SelectedItem => (ModBuffData)SelectModData;
     public override IList DataList => BindProject.BuffData;
+    public override Type ItemType => typeof(ModBuffData);
 
     protected override void OnInitEditor()
     {
@@ -142,13 +144,13 @@ public partial class UIModBuffEditorPanel : UIModCommonEditorFramePanel
         BuffShowOnlyOneDrawer.Title = "只显示一层";
         BuffShowOnlyOneDrawer.OnValueChange = isOn => SelectedItem.ShowOnlyOne = isOn ? 1 : 0;
 
-        SeidListDrawer.Title = "功能";
+        SeidListDrawer.Title = "特性";
         SeidListDrawer.BindSeid(this,
             () => ModMgr.Instance.BuffSeidMetas,
             () => BindProject.BuffSeidDataGroup,
             () => SelectedItem.SeidList);
         
-        OuterSeidListDrawer.Title = "未加入功能";
+        OuterSeidListDrawer.Title = "未加入特性";
         OuterSeidListDrawer.BindSeid(this,
             () => ModMgr.Instance.BuffSeidMetas,
             () => BindProject.BuffSeidDataGroup,

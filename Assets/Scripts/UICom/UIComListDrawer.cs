@@ -18,7 +18,11 @@ public partial class UIComListDrawer
     public bool CanDrag
     {
         get => rolstMain.IsDraggable;
-        set => rolstMain.IsDraggable = value;
+        set
+        {
+            rolstMain.IsDraggable = value;
+            rolstMain.IsDropable = value;
+        }
     }
 
     public string Title

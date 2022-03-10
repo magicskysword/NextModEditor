@@ -6,7 +6,7 @@ public partial class UIMainHeaderPanel
 {
     protected override void OnInit()
     {
-        txtVersion.text = $"Next Mod编辑器 v{ModMgr.EDITOR_VERSION}";
+        txtVersion.text = $"Next Mod编辑器 v{Bootstrap.EDITOR_VERSION}";
         
         EventCenter.AsObservable<LoadModProjectEventArgs>()
             .Subscribe(args =>

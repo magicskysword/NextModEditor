@@ -82,7 +82,7 @@ public abstract partial class UIModCommonEditorFramePanel : IModDataEditor
                 {
                     DataList.Remove(SelectModData);
                     RefreshItemList();
-                    SelectModData = null;
+                        SelectModData = null;
                 });
         }
     }

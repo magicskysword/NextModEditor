@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 public class ModProject
 {
@@ -10,6 +9,7 @@ public class ModProject
     public List<ModCreateAvatarData> CreateAvatarData { get; set; }
     public ModCreateAvatarSeidDataGroup CreateAvatarSeidDataGroup { get; set; }
     public List<ModBuffData> BuffData { get; set; }
+    public List<ModItemData> ItemData { get; set; }
     public ModBuffSeidDataGroup BuffSeidDataGroup { get; set; }
     public List<ModAffixData> AffixData { get; set; }
     
@@ -46,12 +46,14 @@ public class ModProject
             CreateAvatarData = ModCreateAvatarData.Load(dir)?.Select(pair=>pair.Value).ToList(),
             CreateAvatarSeidDataGroup = ModCreateAvatarSeidDataGroup.Load(dir,ModMgr.Instance.CreateAvatarSeidMetas),
             BuffData = ModBuffData.Load(dir),
+            ItemData = ModItemData.Load(dir),
             BuffSeidDataGroup = ModBuffSeidDataGroup.Load(dir,ModMgr.Instance.BuffSeidMetas),
             AffixData = ModAffixData.Load(dir).Select(pair=>pair.Value).ToList(),
         };
 
         project.CreateAvatarData.ModSort();
         project.BuffData.ModSort();
+        project.ItemData.ModSort();
         project.AffixData.ModSort();
 
         return project;
@@ -64,6 +66,7 @@ public class ModProject
         ModCreateAvatarSeidDataGroup.Save(dir, project.CreateAvatarSeidDataGroup);
         ModBuffData.Save(dir,project.BuffData);
         ModBuffSeidDataGroup.Save(dir, project.BuffSeidDataGroup);
+        ModItemData.Save(dir, project.ItemData);
         ModAffixData.Save(dir, project.AffixData.ToDictionary(item => item.ID.ToString()));
     }
 }

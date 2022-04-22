@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using UniRx;
-using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public partial class UIMainHeaderPanel
 {
@@ -69,6 +70,11 @@ public partial class UIMainHeaderPanel
                     });
             }
         });
+
+        btnCmdFolder.OnClickAsObservable().Subscribe(_ =>
+        {
+            Process.Start(ModMgr.Instance.CurProject.ProjectPath);
+        });
         
         btnCmdAbout.OnClickAsObservable().Subscribe(_ =>
         {
@@ -76,10 +82,13 @@ public partial class UIMainHeaderPanel
         });
         
         goCmdRoot.ForceUpdateRectTransforms();
+        
+        UnityEngine.Canvas.ForceUpdateCanvases();
     }
 
     private void RefreshHeadBar(ModProject argsModProject)
     {
         btnCmdSave.interactable = argsModProject != null;
+        btnCmdFolder.interactable = argsModProject != null;
     }
 }

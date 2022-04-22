@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 [ModDataInit]
-public class ModAffixData : ModSingleFileDataBase<ModAffixData>
+public class ModAffixData : ModSingleFileData<ModAffixData>
 {
     public static void Init()
     {

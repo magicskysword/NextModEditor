@@ -21,6 +21,7 @@ public class ModMgr
     public List<ModBuffDataTriggerType> BuffDataTriggerTypes { get; set; }
     public List<ModBuffDataRemoveTriggerType> BuffDataRemoveTriggerTypes { get; set; }
     public List<ModBuffDataOverlayType> BuffDataOverlayTypes { get; set; }
+    public List<ModItemDataGuideType> ItemDataGuideTypes { get; set; }
     public List<ModAttackType> AttackTypes { get; set; }
     public List<ModElementType> ElementTypes { get; set; }
     public List<ModComparisonOperatorType> ComparisonOperatorTypes { get; set; }
@@ -71,17 +72,20 @@ public class ModMgr
         BuffDataOverlayTypes = JArray
             .Parse(ModUtils.LoadConfig("Meta/BuffOverlayType.json"))
             .ToObject<List<ModBuffDataOverlayType>>();
+        ItemDataGuideTypes = JArray
+            .Parse(ModUtils.LoadConfig("Meta/ItemGuideType.json"))
+            .ToObject<List<ModItemDataGuideType>>();
         AttackTypes = JArray
-            .Parse(ModUtils.LoadConfig("Meta/AttackTypes.json"))
+            .Parse(ModUtils.LoadConfig("Meta/AttackType.json"))
             .ToObject<List<ModAttackType>>();
         ElementTypes = JArray
-            .Parse(ModUtils.LoadConfig("Meta/ElementTypes.json"))
+            .Parse(ModUtils.LoadConfig("Meta/ElementType.json"))
             .ToObject<List<ModElementType>>();
         ComparisonOperatorTypes = JArray
-            .Parse(ModUtils.LoadConfig("Meta/ComparisonOperatorTypes.json"))
+            .Parse(ModUtils.LoadConfig("Meta/ComparisonOperatorType.json"))
             .ToObject<List<ModComparisonOperatorType>>();
         TargetTypes = JArray
-            .Parse(ModUtils.LoadConfig("Meta/TargetTypes.json"))
+            .Parse(ModUtils.LoadConfig("Meta/TargetType.json"))
             .ToObject<List<ModTargetType>>();
         
         DefaultAffixData = ModAffixData.Load(ModUtils.GetConfigPath("Data"))

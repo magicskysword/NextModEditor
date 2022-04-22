@@ -189,15 +189,7 @@ public partial class UIModBuffEditorPanel : UIModCommonEditorFramePanel
         else
         {
             AffixPreviewDrawer.gameObject.SetActive(true);
-            var sb = new StringBuilder();
-            foreach (var id in curData.AffixList)
-            {
-                var affixData = BindProject.FindAffix(id);
-                sb.Append(ModUtils.GetAffixDesc(affixData));
-                sb.Append("\n");
-            }
-
-            AffixPreviewDrawer.Content = sb.ToString();
+            AffixPreviewDrawer.Content = ModUtils.GetAffixDesc(curData.AffixList);
         }
         BuffTypeDrawer.Select(ModMgr.Instance.BuffDataBuffTypes
             .TryFind(item => item.TypeID == curData.BuffType));

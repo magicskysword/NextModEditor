@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using UnityEngine;
 
 public static class ModUtils
@@ -102,6 +103,18 @@ public static class ModUtils
         {
             return $"【{affixData.Name}】{affixData.Desc}";
         }
+    }
+
+    public static string GetAffixDesc(List<int> affixIntList)
+    {
+        var sb = new StringBuilder();
+        foreach (var id in affixIntList)
+        {
+            var affixData = ModMgr.Instance.CurProject.FindAffix(id);
+            sb.Append(GetAffixDesc(affixData));
+            sb.Append("\n");
+        }
+        return sb.ToString();
     }
 
     public static IEnumerable<Type> GetTypesWithAttribute(Assembly assembly, Type attributeType)

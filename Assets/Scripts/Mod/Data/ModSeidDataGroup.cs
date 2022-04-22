@@ -28,6 +28,8 @@ public class ModSeidDataGroup
                 try
                 {
                     var seidData = ModSeidData.LoadSeidData(meta,(JObject)property.Value);
+                    if (property.Name != seidData.ID.ToString())
+                        throw new ModException("Seid ID与Key ID不一致");
                     data.DataList.Add(seidData);
                 }
                 catch (Exception e)

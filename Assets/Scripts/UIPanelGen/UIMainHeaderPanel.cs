@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using VirtualList;
+using UnityEngine.UI.Extensions;
 
 [RequireComponent(typeof(Canvas))]
 [RequireComponent(typeof(GraphicRaycaster))]
@@ -21,6 +22,8 @@ public partial class UIMainHeaderPanel : UIPanelBase
     [NonSerialized]
     public Button btnCmdSave;
     [NonSerialized]
+    public Button btnCmdFolder;
+    [NonSerialized]
     public Button btnCmdAbout;
     [NonSerialized]
     public TextMeshProUGUI txtVersion;
@@ -30,6 +33,7 @@ public partial class UIMainHeaderPanel : UIPanelBase
         goCmdRoot = FindBindComponent<RectTransform>("g:goCmdRoot");
         btnCmdOpen = FindBindComponent<Button>("g:btnCmdOpen");
         btnCmdSave = FindBindComponent<Button>("g:btnCmdSave");
+        btnCmdFolder = FindBindComponent<Button>("g:btnCmdFolder");
         btnCmdAbout = FindBindComponent<Button>("g:btnCmdAbout");
         txtVersion = FindBindComponent<TextMeshProUGUI>("g:txtVersion");
 

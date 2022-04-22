@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 public class ModSeidData : IModData
@@ -71,6 +72,16 @@ public class ModSeidData : IModData
                     var sIntArray = new ModSIntArray();
                     data.DataList.Add(seidProperty.ID,sIntArray);
                     break;
+                case ModSeidPropertyType.Float:
+                    var sFloat = new ModSFloat();
+                    data.DataList.Add(seidProperty.ID,sFloat);
+                    break;
+                case ModSeidPropertyType.String:
+                    var sString = new ModSString();
+                    data.DataList.Add(seidProperty.ID,sString);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
         return data;

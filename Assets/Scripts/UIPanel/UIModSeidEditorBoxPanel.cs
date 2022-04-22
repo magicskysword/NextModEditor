@@ -71,6 +71,7 @@ public partial class UIModSeidEditorBoxPanel : IUIClose
                 inputFloatNumberDrawer.EndEdit = i =>
                 {
                     sFloat.Value = i;
+                    inputFloatNumberDrawer.Content = sFloat.Value.ToString("F");
                     RefreshUI();
                 };
             }

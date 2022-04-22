@@ -43,6 +43,7 @@ public partial class UIProjectInfoPanel
         CreateEditor<UIModAffixEditorPanel>("词缀");
         CreateEditor<UIModCreateAvatarEditorPanel>("创建角色天赋");
         CreateEditor<UIModBuffEditorPanel>("Buff数据");
+        CreateEditor<UIModItemEditorPanel>("物品数据");
 
         Project = ModMgr.Instance.CurProject;
 

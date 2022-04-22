@@ -2367,9 +2367,9 @@
             {
                 "ID": "value1",
                 "Type": "Int",
-                "Desc": "X BuffID",
-                "SpecialDrawer": [
-                    "BuffDrawer"
+                "Desc": "X Buff类型",
+                "SpecialDrawer" : [
+                    "BuffTypeDrawer"
                 ]
             },
             {

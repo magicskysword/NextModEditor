@@ -5,25 +5,34 @@ public static class EventCenter
 {
     private static Dictionary<Type, IEventSubject> _events = new Dictionary<Type, IEventSubject>();
 
-    public static IObservable<T> AsObservable<T>() where T : IEventArgs
+    private static IEventSubject GetOrCreateSubject<T>() where T : class, IEventArgs
     {
         if (!_events.TryGetValue(typeof(T), out var targetEvent))
         {
             targetEvent = new EventSubject<T>();
             _events.Add(typeof(T), targetEvent);
         }
-        
-        return ((EventSubject<T>)targetEvent).OnReceiver;
+
+        return targetEvent;
     }
 
-    public static void Send<T>(T args) where T : IEventArgs
+    public static void Register<T>(Action<T> callback) where T : class, IEventArgs
+    {
+        GetOrCreateSubject<T>().Register(callback);
+    }
+
+    public static void Unregister<T>(Action<T> callback) where T : class, IEventArgs
+    {
+        GetOrCreateSubject<T>().Unregister(callback);
+    }
+
+    public static void Send<T>(T args) where T : class, IEventArgs
     {
         if (!_events.TryGetValue(typeof(T), out var targetEvent))
         {
             return;
         }
 
-        var genericEvent = (EventSubject<T>)targetEvent;
-        genericEvent.OnTrigger.OnNext(args);
+        targetEvent.Send(args);
     }
 }

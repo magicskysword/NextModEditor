@@ -1,0 +1,14 @@
+{
+  "scaleMode": "ConstantPixelSize",
+  "screenMathMode": "MatchWidthOrHeight",
+  "designResolutionX": 1600,
+  "designResolutionY": 900,
+  "devices": [
+    {
+      "name": "Windows",
+      "resolutionX": 1600,
+      "resolutionY": 900
+    }
+  ],
+  "fileName": "Adaptation"
+}

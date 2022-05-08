@@ -8,9 +8,9 @@ using UnityEngine;
 
 public class ModMgr
 {
-    public static ModMgr Instance { get; }
+    public static ModMgr I { get; }
     
-    public ModProject CurProject { get; set; }
+    // Meta
     public List<ModAffixDataProjectType> AffixDataProjectTypes { get; set; }
     public List<ModAffixDataAffixType> AffixDataAffixTypes { get; set; }
     public Dictionary<int,ModSeidMeta> CreateAvatarSeidMetas { get; set; }
@@ -26,8 +26,13 @@ public class ModMgr
     public List<ModElementType> ElementTypes { get; set; }
     public List<ModComparisonOperatorType> ComparisonOperatorTypes { get; set; }
     public List<ModTargetType> TargetTypes { get; set; }
+    
+    // Data
     public Dictionary<int,ModAffixData> DefaultAffixData { get; set; }
     public Dictionary<int,ModBuffData> DefaultBuffData { get; set; }
+    
+    // Text
+    public Dictionary<string,string> I18NText { get; set; }
 
     static ModMgr()
     {
@@ -37,7 +42,7 @@ public class ModMgr
             var initMethod = type.GetMethod("Init", BindingFlags.Static | BindingFlags.Public);
             initMethod!.Invoke(null, Array.Empty<object>());
         }
-        Instance = new ModMgr();
+        I = new ModMgr();
     }
 
     public void Init()
@@ -92,6 +97,10 @@ public class ModMgr
             .ToDictionary(pair => pair.Value.ID, pair => pair.Value);
         DefaultBuffData = ModBuffData.Load(ModUtils.GetConfigPath("Data"))
             .ToDictionary(item => item.ID);
+
+        I18NText = JObject
+            .Parse(ModUtils.LoadConfig("Text.json"))
+            .ToObject<Dictionary<string, string>>();
     }
 
     public ModProject OpenProject()
@@ -113,5 +122,15 @@ public class ModMgr
     {
         path ??= modProject.ProjectPath;
         ModProject.Save(path, modProject);
+    }
+
+    public string GetText(string key)
+    {
+        return I18NText.ContainsKey(key) ? I18NText[key] : $"not found : {key}";
+    }
+
+    public string GetCreateAvatarTalentTypeDesc(int relationNum)
+    {
+        return CreateAvatarDataTalentTypes.FirstOrDefault(type => type.TypeID == relationNum)?.Desc ?? GetText("Main.Unknown");
     }
 }

@@ -19,10 +19,23 @@ public class ModProject
         
         if(affixData == null)
         {
-            ModMgr.Instance.DefaultAffixData.TryGetValue(affixID,out affixData);
+            ModMgr.I.DefaultAffixData.TryGetValue(affixID,out affixData);
         }
 
         return affixData;
+    }
+
+    public List<ModAffixData> GetAllAffix()
+    {
+        var list = new List<ModAffixData>();
+        list.AddRange(ModMgr.I.DefaultAffixData.Values);
+        foreach (var affixData in AffixData)
+        {
+            if(list.Find(data=>data.ID == affixData.ID) == null)
+                list.Add(affixData);
+        }
+        list.Sort((dataA, dataB) => dataA.ID.CompareTo(dataB.ID));
+        return list;
     }
     
     public ModBuffData FindBuff(int buffID)
@@ -31,7 +44,7 @@ public class ModProject
         
         if(buffData == null)
         {
-            ModMgr.Instance.DefaultBuffData.TryGetValue(buffID,out buffData);
+            ModMgr.I.DefaultBuffData.TryGetValue(buffID,out buffData);
         }
 
         return buffData;
@@ -44,10 +57,10 @@ public class ModProject
             ProjectPath = dir,
             Config = ModConfig.Load(dir),
             CreateAvatarData = ModCreateAvatarData.Load(dir)?.Select(pair=>pair.Value).ToList(),
-            CreateAvatarSeidDataGroup = ModCreateAvatarSeidDataGroup.Load(dir,ModMgr.Instance.CreateAvatarSeidMetas),
+            CreateAvatarSeidDataGroup = ModCreateAvatarSeidDataGroup.Load(dir,ModMgr.I.CreateAvatarSeidMetas),
             BuffData = ModBuffData.Load(dir),
             ItemData = ModItemData.Load(dir),
-            BuffSeidDataGroup = ModBuffSeidDataGroup.Load(dir,ModMgr.Instance.BuffSeidMetas),
+            BuffSeidDataGroup = ModBuffSeidDataGroup.Load(dir,ModMgr.I.BuffSeidMetas),
             AffixData = ModAffixData.Load(dir).Select(pair=>pair.Value).ToList(),
         };
 

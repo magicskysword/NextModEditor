@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using UIPkg.Main;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
@@ -9,21 +8,19 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         try
         {
-            ModMgr.Instance.Init();
+            ModMgr.I.Init();
+            FGUIMgr.I.Init();
 
-            UIMgr.Instance.GetPanel<UIBackgroundPanel>(UILayer.Bottom).Show();
-            UIMgr.Instance.GetPanel<UIMainHeaderPanel>(UILayer.Middle).Show();
-            UIMgr.Instance.GetPanel<UIProjectInfoPanel>(UILayer.Middle).Show();
+            FGUIMgr.I.ShowPanel<UIPanelMain>();
         }
         catch (Exception e)
         {
             Debug.LogException(e);
-            UIMessageScrollBoxPanel.ShowMessage($"警告",$"初始化发生错误！请检查配置数据或重装编辑器。\n{e}"
-            ,callback: Application.Quit);
         }
     }
+        
 }

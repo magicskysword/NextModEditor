@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="jcakb2cp">
+  <resources>
+    <image id="sy2rd" name="slider4.png" path="/Image/"/>
+    <image id="sy2re" name="slider3.png" path="/Image/"/>
+    <image id="sy2rf" name="slider2.png" path="/Image/"/>
+    <image id="sy2rg" name="slider1.png" path="/Image/"/>
+    <image id="sy2rh" name="inputFrame.png" path="/Image/" scale="9grid" scale9grid="16,16,32,32"/>
+    <image id="sy2ri" name="icon_warning.png" path="/Image/"/>
+    <image id="sy2rj" name="icon_TrueAndFalse2.png" path="/Image/"/>
+    <image id="sy2rk" name="icon_TrueAndFalse1.png" path="/Image/"/>
+    <image id="sy2rl" name="icon_tool3.png" path="/Image/"/>
+    <image id="sy2rm" name="icon_tool2.png" path="/Image/"/>
+    <image id="sy2rn" name="icon_tool1.png" path="/Image/" exported="true"/>
+    <image id="sy2ro" name="icon_drag.png" path="/Image/"/>
+    <image id="sy2rp" name="icon_colse.png" path="/Image/"/>
+    <image id="sy2rq" name="icon_arrow4.png" path="/Image/"/>
+    <image id="sy2rr" name="icon_arrow3.png" path="/Image/"/>
+    <image id="sy2rs" name="icon_arrow2.png" path="/Image/"/>
+    <image id="sy2rt" name="icon_arrow1.png" path="/Image/"/>
+    <image id="sy2ru" name="frame.png" path="/Image/" scale="9grid" scale9grid="8,8,48,48"/>
+    <image id="sy2ry" name="toggle1.png" path="/Image/"/>
+    <image id="sy2rz" name="toggle2.png" path="/Image/"/>
+    <component id="sy2r11" name="BtnCommon.xml" path="/Component/Button/"/>
+    <component id="sy2r15" name="BtnOK.xml" path="/Component/Button/"/>
+    <component id="hbj216" name="ComMainHeader.xml" path="/Component/PanelCom/" exported="true"/>
+    <component id="hbj217" name="BtnMenuItem.xml" path="/Component/Button/"/>
+    <component id="hbj218" name="PopupMenu_item.xml" path="/Component/Popup/"/>
+    <component id="hbj219" name="PopupMenu.xml" path="/Component/Popup/" exported="true"/>
+    <component id="hbj21a" name="PanelMain.xml" path="/Panel/" exported="true"/>
+    <component id="hbj21c" name="ComMainProject.xml" path="/Component/PanelCom/" exported="true"/>
+    <component id="10zy01d" name="BtnTreeItem.xml" path="/Component/Button/" exported="true"/>
+    <component id="10zy01e" name="BtnExpand.xml" path="/Component/Button/"/>
+    <component id="10zy01f" name="BtnTab.xml" path="/Component/Button/" exported="true"/>
+    <component id="10zy01g" name="BtnClose.xml" path="/Component/Button/"/>
+    <component id="10zy01i" name="ScrollBarTab.xml" path="/Component/ScrollBar/" exported="true"/>
+    <component id="10zy01j" name="ComMainDocumentView.xml" path="/Component/PanelCom/" exported="true"/>
+    <component id="10zy01k" name="ComMainInspector.xml" path="/Component/PanelCom/" exported="true"/>
+    <component id="10zy01l" name="ScrollBarV_grip.xml" path="/Component/ScrollBar/"/>
+    <component id="10zy01m" name="ScrollBarV.xml" path="/Component/ScrollBar/" exported="true"/>
+    <component id="10zy01n" name="ScrollBarH_grip.xml" path="/Component/ScrollBar/"/>
+    <component id="10zy01o" name="ScrollBarH.xml" path="/Component/ScrollBar/" exported="true"/>
+    <component id="10zy01p" name="ComTableRow.xml" path="/Component/Table/" exported="true"/>
+    <component id="10zy01q" name="LabelTableGrid.xml" path="/Component/Table/" exported="true"/>
+    <component id="10zy01s" name="LabelTableGridHeader.xml" path="/Component/Table/" exported="true"/>
+    <component id="10zy01t" name="ComTableList.xml" path="/Component/Table/" exported="true"/>
+    <component id="10zy01u" name="ComStringDrawer.xml" path="/Component/Drawer/" exported="true"/>
+    <component id="10zy01v" name="ComIntDrawer.xml" path="/Component/Drawer/" exported="true"/>
+    <component id="10zy01w" name="ComFloatDrawer.xml" path="/Component/Drawer/" exported="true"/>
+    <component id="10zy01x" name="ComStringAreaDrawer.xml" path="/Component/Drawer/" exported="true"/>
+    <image id="10zy01y" name="icon_edit.png" path="/Image/"/>
+    <component id="10zy01z" name="BtnEdit.xml" path="/Component/Button/"/>
+    <component id="10zy020" name="ComMainFooter.xml" path="/Component/PanelCom/" exported="true"/>
+    <font id="10zy022" name="Alibaba-PuHuiTi-Medium.ttf" path="/font/" renderMode="smooth" samplePointSize="16"/>
+    <component id="tcay23" name="WindowFrame.xml" path="/Component/WindowFrame/"/>
+    <image id="tcay26" name="shadow_radial.png" path="/Image/" scale="9grid"/>
+    <image id="tcay27" name="shadow_flat.png" path="/Image/" scale="9grid" scale9grid="6,6,20,20"/>
+    <component id="tcay28" name="WinStringInputDialog.xml" path="/Popup/" exported="true"/>
+    <image id="tcay2a" name="Radial Filled 32px.png" path="/Image/" scale="9grid"/>
+    <component id="tcay2b" name="WinConfirmDialog.xml" path="/Popup/" exported="true"/>
+    <component id="dxyi2c" name="ComIntBindDataDrawer.xml" path="/Component/Drawer/" exported="true"/>
+    <component id="dxyi2d" name="WinSelectorDialog.xml" path="/Popup/" exported="true"/>
+    <component id="of7d2e" name="BtnCloseTab.xml" path="/Component/Button/"/>
+    <component id="of7d2f" name="ComboBox_item.xml" path="/Component/ComboBox/"/>
+    <component id="of7d2g" name="ComboBox_popup.xml" path="/Component/ComboBox/"/>
+    <component id="of7d2h" name="ComboBox.xml" path="/Component/ComboBox/" exported="true"/>
+    <component id="of7d2i" name="ComDropdownDrawer.xml" path="/Component/Drawer/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

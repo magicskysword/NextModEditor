@@ -26,10 +26,10 @@ public class ModCreateAvatarData : ModSingleFileData<ModCreateAvatarData>
     public int Cost { get; set; }
 
     [JsonProperty(PropertyName = "fenLei", Order = 4)]
-    public string CreateType { get; set; } = string.Empty;
+    public string TalentType { get; set; } = string.Empty;
 
     [JsonProperty(PropertyName = "fenLeiGuanLian", Order = 5)]
-    public int CreateTypeRelation { get; set; }
+    public int TalentTypeRelation { get; set; }
 
     [JsonProperty(PropertyName = "seid", Order = 6)]
     public List<int> SeidList { get; set; } = new List<int>();
@@ -45,7 +45,7 @@ public class ModCreateAvatarData : ModSingleFileData<ModCreateAvatarData>
 
     public void SetTalentType(ModCreateAvatarDataTalentType type)
     {
-        CreateType = type.TypeName;
-        CreateTypeRelation = type.TypeID;
+        TalentType = type.TypeName;
+        TalentTypeRelation = type.TypeID;
     }
 }

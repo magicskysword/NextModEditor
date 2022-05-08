@@ -105,12 +105,12 @@ public static class ModUtils
         }
     }
 
-    public static string GetAffixDesc(List<int> affixIntList)
+    public static string GetAffixDesc(this ModProject project,List<int> affixIntList)
     {
         var sb = new StringBuilder();
         foreach (var id in affixIntList)
         {
-            var affixData = ModMgr.Instance.CurProject.FindAffix(id);
+            var affixData = project.FindAffix(id);
             sb.Append(GetAffixDesc(affixData));
             sb.Append("\n");
         }
@@ -126,5 +126,10 @@ public static class ModUtils
                 yield return type;
             }
         }
+    }
+
+    public static string I18N(this string key)
+    {
+        return ModMgr.I.GetText(key);
     }
 }

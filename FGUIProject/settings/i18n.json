@@ -1,0 +1,14 @@
+{
+  "langFiles": [
+    {
+      "name": "chinese",
+      "path": "D:\\MiChangSheng\\Mod\\NextModEditor\\FGUIProject\\I18N\\chinese",
+      "fontName": ""
+    },
+    {
+      "name": "english",
+      "path": "D:\\MiChangSheng\\Mod\\NextModEditor\\FGUIProject\\I18N\\english",
+      "fontName": ""
+    }
+  ]
+}

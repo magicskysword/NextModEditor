@@ -72,6 +72,6 @@ public class ModBuffData : ModFolderFileData<ModBuffData>
 
     public static ModBuffDataBuffType GetBuffType(int typeId)
     {
-        return ModMgr.Instance.BuffDataBuffTypes.Find(data => data.TypeID == typeId);
+        return ModMgr.I.BuffDataBuffTypes.Find(data => data.TypeID == typeId);
     }
 }

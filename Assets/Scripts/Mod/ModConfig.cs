@@ -27,16 +27,9 @@ public class ModConfig
     
     public static void Save(string dir,ModConfig modConfig)
     {
-        try
-        {
-            string filePath = $"{dir}/modConfig.json";
+        string filePath = $"{dir}/modConfig.json";
 
-            var json = JObject.FromObject(modConfig).ToString(Formatting.Indented);
-            File.WriteAllText(filePath, json);
-        }
-        catch (Exception e)
-        {
-            throw;
-        }
+        var json = JObject.FromObject(modConfig).ToString(Formatting.Indented);
+        File.WriteAllText(filePath, json);
     }
 }
